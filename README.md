@@ -70,7 +70,7 @@ python3 NomDeFichier.py
 
 ```
 
-[flutter](https://flutter.dev/) est requis pour pouvoir exécuter cette application. C'est le front end de l'app. Pour installer tous les modules nécessaires au fonctionnement de notre jeu, exécutez la commande suivante :
+[flutter](https://flutter.dev/) est requis pour pouvoir exécuter cette application. C'est le front end de l'app. Pour installer tous les modules nécessaires au fonctionnement de notre App, exécutez la commande suivante :
 
 ```sh
 
