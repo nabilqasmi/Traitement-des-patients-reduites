@@ -39,7 +39,7 @@ Le projet: https://github.com/users/OthmaneBk/projects/1
 
 ## Installation et Execution de l'application
 
-[python.py](https://www.python.org/) est requis pour pouvoir exécuter cette application. C'est le back end de l'app. Pour installer tous les modules nécessaires au fonctionnement de notre jeu, exécutez la commande suivante :
+[python.py](https://www.python.org/) est requis pour pouvoir exécuter cette application. C'est le back end de l'app. Pour installer tous les modules nécessaires au fonctionnement de notre App, exécutez la commande suivante :
 
 ```sh
 Nous avons pas encore décidé
