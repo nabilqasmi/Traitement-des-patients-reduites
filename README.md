@@ -42,6 +42,8 @@ Le projet: https://github.com/users/OthmaneBk/projects/1
 - mettre box contenant des videos ( En tant que utilisateur je peux voir des exercices pour le soin )
 - afficher comme bloc not afin de stocker ses informations dans la BD ( En tant que utilisateur je peux noter des progrès et mes difficultés )
 - bouton qui permet faire un lien entre médecine et le patient ( En tant que utilisateur je peux prendre un rendez-vous avec un médecin )
+- Data cleaning et Data collection ( En tant que utilisateur je peux voir mes donnes mon nom, ma date de naissance, mes doses )
+- Des Algorithmes pour la data science ( En tant que utilisateur je peux savoir si je suis malade ou non )
 ## A ce temps-la, nous sommes pas prets a commancer le developpement(Fron-end) car nous sommes dans la phase d'apprendre a developper des applications en Flutter Mais on voudrant commancer par le back-end(Python deja utilisé) Pour le moment, certaines autres fonctionnalités seront appréciées dans les prochains jours, en discutant avec notre encadrant
 
 ## Technologies
