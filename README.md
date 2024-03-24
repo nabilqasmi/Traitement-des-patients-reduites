@@ -13,8 +13,8 @@ Le projet: https://github.com/users/OthmaneBk/projects/1
 
 ## Projet en cours de réalisation par :
 
-- Nabil Qasmi
-- Othmane Kella Bennani
+- Nabil Qasmi Groupe A
+- Othmane Kella Bennani Groupe B
 
 ## Fonctionnalités proposé
 
