@@ -20,14 +20,30 @@ Le projet: https://github.com/users/OthmaneBk/projects/1
 
 ## Fonctionnalités proposé
 
-- Fonctionnalités 1 ( User Story 1 ) 
-- Fonctionnalités 2 ( User Story 2 ) 
-- Fonctionnalités 3 ( User Story 3 ) 
-- Fonctionnalités 4 ( User Story 4 ) 
-- Fonctionnalités 5 ( User Story 5 ) 
-- Fonctionnalités 6 ( User Story 6 ) 
-- Fonctionnalités 7 ( User Story 7 ) 
-
+- Création des pages et boutons interactif ( En tant que utilisateur je peux familiariser avec Application) 
+- Création des pages et des boutons ( En tant que utilisateur je peux créer un compte ) 
+- création des pages et des boutons ( En tant que utilisateur je peux remplir le formulaire ) 
+- création des pages et des boutons ( En tant que utilisateur je peux Authentifier ) 
+- Creation des pages et des boutons et des icons ( En tant que utilisateur je peux scroller sur ma page ) 
+- Création des pages et des boutons  ( En tant que utilisateur je peux consulter le rappel de medicaments ) 
+- Création des pages et des boutons ( En tant que utilisateur je peux faire le suivi de l'activité )
+- Création des pages et des boutons ( En tant que utilisateur je peux suivre mes seances de réduction )
+- Création des pages et des boutons ( En tant que utilisateur je peux me deconncter )
+- Création des pageset des boutons ( En tant que utilisateur je peux voir le paramètre )
+- Stock les donnes dans la base donnes ( En tant que utilisateur je peux saisir mes coordonnes )
+- Verification les coor a partir de BD ( En tant que utilisateur je peux saisir mon nom et motPasse )
+- création d'un calendrier contenant les doses mesurer ( En tant que utilisateur je peux suivre mon calendrier, mes doses a apprendre )
+- creation des boutons pour stocker les donnes d'un med dans BD ( En tant que utilisateur je peux ajouter un médicaments )
+- création des boutons pour modifier suite a modifier dans la BD ( En tant que utilisateur je peux modifier un médicaments )
+- création des boutons pour supprimer suite a supprimer dans la BD ( En tant que utilisateur je peux supprimer un médicaments )
+- un graphe montrant le suivi d'une activité choisi ( En tant que utilisateur je peux suivre mon progrès d'une activité physique )
+- un bouton pour fixer un objectif et le stcocker dans la base donnes a fin de lui aider ( En tant que utilisateur je peux fixer mon objectif )
+- un bouton pour le nombre de pas pour le patient ( En tant que utilisateur je peux définir mes pas précis )
+- mettre box contenant des videos ( En tant que utilisateur je peux voir des exercices pour le soin )
+- afficher comme bloc not afin de stocker ses informations dans la BD ( En tant que utilisateur je peux noter des progrès et mes difficultés )
+- bouton qui permet faire un lien entre médecine et le patient ( En tant que utilisateur je peux prendre un rendez-vous avec un médecin )
+## A ce temps-la, nous sommes pas prets a commancer le developpement(Fron-end) car nous sommes dans la phase d'apprendre a developper des applications en Flutter
+## Mais on voudrant commancer par le back-end(Python deja utilisé) pour le moment 
 
 ## Technologies
 
