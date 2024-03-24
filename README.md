@@ -42,32 +42,32 @@ Lien_projet ou je peux voir le kanban,roadmap et taches.
 [python.py](https://www.python.org/) est requis pour pouvoir exécuter cette application. C'est le back end de l'app. Pour installer tous les modules nécessaires au fonctionnement de notre jeu, exécutez la commande suivante :
 
 ```sh
-Nous avons pas encore décider
+Nous avons pas encore décidé
 
 ```
 
-Puis pour lancer l'application coté back lancez la commande : 
+Puis pour lancer l'application coté back : 
 
 ```sh
-Nous avons pas encore décider
+EN CMD, en mettre python3 NomDeFichier.py(../../../../NomDeFichier.py) pour runner l'application
 
 ```
-
 
 [flutter](https://flutter.dev/) est requis pour pouvoir exécuter cette application. C'est le front end de l'app. Pour installer tous les modules nécessaires au fonctionnement de notre jeu, exécutez la commande suivante :
 
 ```sh
-apres l'installation de flutter, quand tu cree un nouveau projet(New Flutter Project) en Android Studio tu dois mettre Dans Flutter SDK path: le dossier de flutter que tu as déja installer
+
+les modules a mettre(Nous avons pas encore décidé)
 
 ```
 
 Puis pour lancer l'application coté front: 
 
-tu dois télecharger Un emulator(Running Device)  un mini telephone de type Android, apres tu lance l'application sur le bouton Run 'main.dart'.
+Apres l'installation de flutter, quand tu cree un nouveau projet(New Flutter Project) en Android Studio tu dois mettre Dans Flutter SDK path: le dossier de flutter que tu as déja installer
+
+Tu dois télecharger Un emulator(Running Device)  un mini telephone de type Android, apres tu lance l'application sur le bouton Run 'main.dart'.
 
 Par la suite passez sur le port 3001 sur le Browser.
-
-
 
 ### Date de sortie du JEU
 
