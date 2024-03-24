@@ -9,7 +9,7 @@ L'hémophilie B, moins répandue, est due à un déficit en facteur IX (FIX).
 
 
 Lien_projet ou je peux voir le kanban,roadmap et taches
-[Lien_projet:https://github.com/users/OthmaneBk/projects/1]
+[Lien de projet](Lien_projet:https://github.com/users/OthmaneBk/projects/1)
 
 
 ## Projet en cours de réalisation par :
