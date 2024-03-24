@@ -46,10 +46,10 @@ Nous avons pas encore décidé
 
 ```
 
-Puis pour lancer l'application coté back : 
+Puis pour lancer l'application coté back En CMD allant sur le chemein de fichier.py: 
 
 ```sh
-EN CMD, en mettre python3 NomDeFichier.py(../../../../NomDeFichier.py) pour runner l'application
+python3 NomDeFichier.py
 
 ```
 
