@@ -35,9 +35,9 @@ Lien_projet ou je peux voir le kanban,roadmap et taches
 - [flutter](https://flutter.dev/)
 - [Visual Studio Code](https://code.visualstudio.com)
 - [python.py](https://www.python.org/)
-- SQLSERVER
+- nous avons pas encore décider(notre encadrant va nous ciblé le SQL a utilisé)
 
-## Installation et Execution de l'application web
+## Installation et Execution de l'application
 
 [python.py](https://www.python.org/) est requis pour pouvoir exécuter cette application. C'est le back end de l'app. Pour installer tous les modules nécessaires au fonctionnement de notre jeu, exécutez la commande suivante :
 
@@ -67,8 +67,7 @@ Apres l'installation de flutter, quand tu cree un nouveau projet(New Flutter Pro
 
 Tu dois télecharger Un emulator(Running Device)  un mini telephone de type Android, apres tu lance l'application sur le bouton Run 'main.dart'.
 
-Par la suite passez sur le port 3001 sur le Browser.
 
-### Date de sortie du JEU
+### Date de sortie de l'application
 
-NOS_APPLICATION sera disponible le 1er Aout 2024 , Tenez vous prêt !
+NOS_APPLICATION sera disponible le 20 mai, Tenez vous prêt !
