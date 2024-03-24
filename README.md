@@ -7,9 +7,7 @@ Les personnes hémophiles présentent un déficit en facteur de coagulation, une
 L'hémophilie A, la plus fréquente, est causée par un déficit en facteur VIII (FVIII).
 L'hémophilie B, moins répandue, est due à un déficit en facteur IX (FIX).
 
-
-https://github.com/OthmaneBk/Traitement-des-patients-r-duites.git
-
+- [Projet en gitHUb](https://github.com/OthmaneBk/Traitement-des-patients-r-duites.git)
 
 ```
 
