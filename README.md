@@ -44,6 +44,7 @@ Le projet: https://github.com/users/OthmaneBk/projects/1
 - bouton qui permet faire un lien entre médecine et le patient ( En tant que utilisateur je peux prendre un rendez-vous avec un médecin )
 - Data cleaning et Data collection ( En tant que utilisateur je peux voir mes donnes mon nom, ma date de naissance, mes doses )
 - Des Algorithmes pour la data science ( En tant que utilisateur je peux savoir si je suis malade ou non )
+- test et train dataSet ( En tant que Utilisateur je peux savoir si je suis malade ou non après remplir le formulaire )
 ## A l'heure actuelle, nous ne sommes pas encore prêts à débuter le développement du front-end car nous sommes en phase d'apprentissage du framework Flutter. Cependant, nous souhaitons commencer par le développement du back-end en utilisant Python, un langage que nous maîtrisons déjà. D'ici quelques jours, nous aimerions implémenter d'autres fonctionnalités, que nous définirons en collaboration avec notre encadrant, Nous n'avons pas encore affecté les tâches en attendant que notre encadrant nous oriente dans la bonne direction
 
 ## Technologies
