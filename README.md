@@ -66,6 +66,11 @@ pip install pandas
 pip install scikit-learn
 
 ```
+Puis vous devez metter 
+  ->import pandas as pd
+  ->from sklearn.model_selection import train_test_split
+  ->from sklearn.naive_bayes import GaussianNB
+  ->from sklearn import metrics
 
 Puis pour lancer l'application coté back En CMD allant sur le chemein de fichier.py: 
 
