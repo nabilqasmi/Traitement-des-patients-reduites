@@ -59,18 +59,19 @@ Le projet: https://github.com/users/OthmaneBk/projects/1
 
 ## Installation et Execution de l'application
 
-[python.py](https://www.python.org/) est requis pour pouvoir exécuter cette application. C'est le back end de l'app. Pour installer tous les modules nécessaires au fonctionnement de notre App, exécutez la commande suivante :
+[python.py](https://www.python.org/) est requis pour pouvoir exécuter cette application. C'est le back end de l'app. Pour installer tous les modules nécessaires au fonctionnement de notre App, apres exécutez les commande: 
+  Vous devez mettre 
+    ->import pandas as pd
+    ->from sklearn.model_selection import train_test_split
+    ->from sklearn.naive_bayes import GaussianNB
+    ->from sklearn import metrics
 
 ```sh
 pip install pandas
 pip install scikit-learn
 
 ```
-Puis vous devez metter 
-  ->import pandas as pd
-  ->from sklearn.model_selection import train_test_split
-  ->from sklearn.naive_bayes import GaussianNB
-  ->from sklearn import metrics
+
 
 Puis pour lancer l'application coté back En CMD allant sur le chemein de fichier.py: 
 
