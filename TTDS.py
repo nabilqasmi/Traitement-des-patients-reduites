@@ -8,5 +8,3 @@ from sklearn.naive_bayes import GaussianNB
 from sklearn import metrics
 from sklearn.metrics import classification_report, confusion_matrix
 
-print("hello world")
-print("salut les gars")
