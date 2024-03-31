@@ -74,13 +74,14 @@ python TTDS.py
 
 ```
 
-[flutter](https://flutter.dev/) est requis pour pouvoir exécuter cette application. C'est le front end de l'app. Pour installer tous les modules nécessaires au fonctionnement de notre App, exécutez la commande suivante :
+[flutter](https://flutter.dev/) est requis pour pouvoir exécuter cette application. C'est le front end de l'app. Pour installer tous les modules nécessaires au fonctionnement de notre App, suive les etapes :
 
-```sh
+- Allez sur le fichier pubspec.yaml
+- ajouter le module au niveau de "dev_dependencies": smooth_page_indicator: ^1.0.0
+- cliquer sur Pub upgrade
 
-les modules a mettre(Nous avons pas encore décidé)
-
-```
+BackGround de l'application :
+- 
 
 Puis pour lancer l'application coté front: 
 
