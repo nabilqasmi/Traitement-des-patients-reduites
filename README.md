@@ -80,7 +80,7 @@ python TTDS.py
 - ajouter le module au niveau de "dev_dependencies": smooth_page_indicator: ^1.0.0
 - cliquer sur Pub upgrade
 
-BackGround de l'application :
+## BackGround de l'application :
 - Allez sur le fichier pubspec.yaml
 - Au niveau de assets:
 - ajouter "- assets/images/"
