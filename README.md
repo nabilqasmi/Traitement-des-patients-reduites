@@ -67,7 +67,7 @@ pip install sklearn
 
 ```
 
-Puis pour lancer l'application coté back En CMD allant sur le chemein de TTDS.py: 
+## Puis pour lancer l'application coté back En CMD allant sur le chemein de TTDS.py: 
 
 ```sh
 python TTDS.py
@@ -85,7 +85,7 @@ python TTDS.py
 - Au niveau de assets:
 - ajouter "- assets/images/"
 
-Puis pour lancer l'application coté front: 
+## Puis pour lancer l'application coté front: 
 
 Apres l'installation de flutter, quand tu cree un nouveau projet(New Flutter Project) en Android Studio tu dois mettre Dans Flutter SDK path: le dossier de flutter que tu as déja installer
 
