@@ -9,10 +9,10 @@ L'hémophilie A, la plus fréquente, est causée par un déficit en facteur VIII
 L'hémophilie B, moins répandue, est due à un déficit en facteur IX (FIX).
 
 ```
-
-
-Le projet: https://github.com/users/OthmaneBk/projects/1
-
+## Le projet
+```
+https://github.com/users/OthmaneBk/projects/1
+```
 
 ## Projet en cours de réalisation par :
 
