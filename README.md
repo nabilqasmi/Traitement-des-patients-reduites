@@ -81,7 +81,9 @@ python TTDS.py
 - cliquer sur Pub upgrade
 
 BackGround de l'application :
-- 
+- Allez sur le fichier pubspec.yaml
+- Au niveau de assets:
+- ajouter "- assets/images/"
 
 Puis pour lancer l'application coté front: 
 
