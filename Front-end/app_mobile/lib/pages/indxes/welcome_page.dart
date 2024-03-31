@@ -3,7 +3,6 @@ import 'package:app_mobile/pages/scres/page2.dart';
 import 'package:app_mobile/pages/scres/page3.dart';
 import 'package:app_mobile/pages/scres/page4.dart';
 import 'package:flutter/material.dart';
-import 'package:dots_indicator/dots_indicator.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class Test extends StatefulWidget {
