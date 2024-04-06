@@ -87,7 +87,7 @@ python test.py
 
 ## Puis pour lancer l'application coté front: 
 
-Apres l'installation de flutter, quand tu cree un nouveau projet(New Flutter Project) en Android Studio tu dois mettre Dans Flutter SDK path: le dossier de flutter que tu as déja installer
+Apres l'installation de flutter, quand tu open le projet(open Flutter Project) en Android Studio tu dois mettre Dans Flutter SDK path: le dossier de flutter que tu as déja installer
 
 Tu dois télecharger Un emulator(Running Device)  un mini telephone de type Android, apres tu lance l'application sur le bouton Run 'main.dart'.
 
