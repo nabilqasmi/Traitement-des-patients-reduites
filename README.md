@@ -67,10 +67,10 @@ pip install sklearn
 
 ```
 
-## Puis pour lancer l'application coté back En CMD allant sur le chemein de TTDS.py: 
+## Puis pour lancer l'application coté back En CMD allant sur le chemein de test.py: 
 
 ```sh
-python TTDS.py
+python test.py
 
 ```
 
