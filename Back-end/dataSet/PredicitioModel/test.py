@@ -5,7 +5,7 @@ import time
 from sklearn.neighbors import KNeighborsClassifier
 
 
-data = pd.read_excel("D:\\3emeAnnee\\PFA\\processus\\dataSetNumbers.xlsx",sheet_name=1)
+data = pd.read_excel("C:\\Users\\kella\\Desktop\\Traitement-des-patients-reduites\\Back-end\\dataSet\\dataSetNumbers.xlsx",sheet_name=1)
 
 
 features=['age','Sexe','Transmission genetique','mode recessif(heriditaire)']

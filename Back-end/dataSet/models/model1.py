@@ -11,7 +11,8 @@ from sklearn.metrics import classification_report, confusion_matrix
 from sklearn.model_selection import cross_val_score,KFold
 
 
-data = pd.read_excel("D:\\3emeAnnee\\PFA\\processus\\dataSetNumbers.xlsx",sheet_name=1)
+
+data = pd.read_excel("C:\\Users\\kella\\Desktop\\Traitement-des-patients-reduites\\Back-end\\dataSet\\dataSetNumbers.xlsx",sheet_name=1)
 
 
 
