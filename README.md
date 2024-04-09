@@ -54,7 +54,7 @@ https://github.com/users/OthmaneBk/projects/1
 - [flutter](https://flutter.dev/)
 - [Visual Studio Code](https://code.visualstudio.com)
 - [python.py](https://www.python.org/)
-- nous avons pas encore décider(notre encadrant va nous ciblé le SQL a utilisé)
+- [mysql](https://www.mysql.com/products/workbench/)
 
 ## Installation et Execution de l'application
 
