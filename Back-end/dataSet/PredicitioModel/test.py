@@ -43,14 +43,20 @@ def decision():
     print('DO you have a chromosome X heridite from your father:')
     modeRecessif= input()
 
-    
+    SexeNumber = {
+        'Homme': 2,
+        'Femme': -2
+        }.get(Sexe.upper(), None)
 
-    SexeNumber=2 if Sexe.upper()=='HOMME' else -2
+    modeRecessifNumber = {
+        'NO': -6,
+        'YES': 6,
+        }.get(modeRecessif.upper(), None)
 
-
-    modeRecessifNumber=-6 if modeRecessif.upper()=='NO' else 6 
-
-    MPNumber=-7 if MP.upper()=='NO' else 7
+    MPNumber = {
+        'NO': -7,
+        'YES': 7,
+        } .get(MP.upper(), None)
     
     #EnvironnementsNumber=8 if Environnements.upper()=='YES' else -8
 
@@ -59,10 +65,13 @@ def decision():
     test_x = pd.DataFrame([listOfInformation], columns=['age','Sexe','Transmission genetique','mode recessif(heriditaire)'])
     print("wait...")
     time.sleep(5)
-    if dtree.predict(test_x)==[1]:
-        print("la resultat est: vous etes malade")
-    else:
-        print("la resultat est: vous n'etes pas malade")
+    try:
+        if dtree.predict(test_x)==[1]:
+            print("la resultat est: vous etes malade")
+        else:
+            print("la resultat est: vous n'etes pas malade")
+    except Exception:
+        print("Error information")
     
     #print(dtree.predict(test_x))
     
