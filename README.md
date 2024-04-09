@@ -49,7 +49,7 @@ https://github.com/users/OthmaneBk/projects/1
 ## A l'heure actuelle, nous ne sommes pas encore prêts à débuter le développement du front-end car nous sommes en phase d'apprentissage du framework Flutter. Cependant, nous souhaitons commencer par le développement du back-end en utilisant Python, un langage que nous maîtrisons déjà. D'ici quelques jours, nous aimerions implémenter d'autres fonctionnalités, que nous définirons en collaboration avec notre encadrant, Nous n'avons pas encore affecté les tâches en attendant que notre encadrant nous oriente dans la bonne direction
 
 ## Design de l'application
-[Figma](https://www.figma.com/fr/downloads/)
+- [Figma](https://www.figma.com/fr/downloads/)
 
 ## Technologies
 
