@@ -1,9 +1,10 @@
-import 'package:app_mobile/pages/scres/page1.dart';
-import 'package:app_mobile/pages/scres/page2.dart';
-import 'package:app_mobile/pages/scres/page3.dart';
-import 'package:app_mobile/pages/scres/page4.dart';
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+
+import '../scresWelcome/page1.dart';
+import '../scresWelcome/page2.dart';
+import '../scresWelcome/page3.dart';
+import 'login_sign_up.dart';
 
 class Test extends StatefulWidget {
   const Test({super.key});
@@ -16,15 +17,6 @@ class _TestState extends State<Test> {
 
   PageController _controller=PageController();
 
-  final WelcomeText=[
-    "HemoEspoir",
-    "Bonjour cher\nUtilisateur",
-    "Welcome to HemoEspoir"
-  ];
-
-
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,11 +24,10 @@ class _TestState extends State<Test> {
         children: [
           PageView(
             controller: _controller,
-            children: [
+            children: const [
               Page1(),
               Page2(),
               Page3(),
-              Page4()
             ],
           ),
           Container(
@@ -53,17 +44,30 @@ class _TestState extends State<Test> {
             alignment: Alignment(0,0.8),
             child: TextButton( // Use ElevatedButton for a raised button effect
               onPressed: () {
-                _controller.jumpToPage(2);
+                Navigator.push(context, MaterialPageRoute(
+                  builder: (context){
+                    return LSU();
+                  }
+                ));
+                //_controller.jumpTo(3);
               },
                 child: Text("Skip",style: TextStyle(color: Colors.green),) // Set the button text
             ),
           ),
-
           Container(
             alignment: Alignment(0,0.66),
               child: ElevatedButton( // Use ElevatedButton for a raised button effect
                 onPressed: () {
-                  _controller.nextPage(duration: Duration(microseconds: 500), curve: Curves.easeIn);
+                  if(_controller.page ==2){
+                    Navigator.push(context, MaterialPageRoute(
+                        builder: (context){
+                          return LSU();
+                        }
+                    ));
+                  }else{
+                    _controller.nextPage(duration: Duration(microseconds: 500), curve: Curves.easeIn);
+                  }
+
                 },
                 child: Text("Next",style: TextStyle(color: Colors.white),),
                 style: ButtonStyle(
@@ -77,4 +81,5 @@ class _TestState extends State<Test> {
       ),
     );
   }
+
 }

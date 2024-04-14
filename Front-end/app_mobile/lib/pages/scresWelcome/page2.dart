@@ -21,7 +21,7 @@ class Page2 extends StatelessWidget {
                 padding: EdgeInsets.only(right: 0,top: 90),
                 child: Center(
                   child:
-                  Text("Bonjou cher\nUtilisateur",
+                  Text("Bonjour cher\nUtilisateur",
 
                     style: TextStyle(
                         fontSize: 40
