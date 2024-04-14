@@ -63,7 +63,7 @@ def decision():
     listOfInformation=[age,SexeNumber,MPNumber,modeRecessifNumber]
 
     test_x = pd.DataFrame([listOfInformation], columns=['age','Sexe','Transmission genetique','mode recessif(heriditaire)'])
-    print("wait...")
+    print("Attendez pour votre resultat...")
     time.sleep(5)
     try:
         if dtree.predict(test_x)==[1]:
