@@ -44,8 +44,8 @@ def decision():
     modeRecessif= input()
 
     SexeNumber = {
-        'Homme': 2,
-        'Femme': -2
+        'HOMME': 2,
+        'FEMME': -2
         }.get(Sexe.upper(), None)
 
     modeRecessifNumber = {
