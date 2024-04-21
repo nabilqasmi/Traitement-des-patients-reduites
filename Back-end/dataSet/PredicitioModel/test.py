@@ -13,6 +13,12 @@ features=['age','Sexe','Transmission genetique','mode recessif(heriditaire)']
 X=data[features]
 Y=data['hemophilie']
 
+#moyenne, colleration, medium, les notions statistiques, plot,..
+
+#vision de BackEnd 
+
+#laison do API(FLASK)
+
 
 X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size=0.1, random_state=101)
 #print(X_test)
