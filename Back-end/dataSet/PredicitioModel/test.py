@@ -14,23 +14,12 @@ X=data[features]
 Y=data['hemophilie']
 
 
-
-#vision de BackEnd 
-
-#laison do API(FLASK)
-
-
 X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size=0.1, random_state=101)
-#print(X_test)
+
 dtree = KNeighborsClassifier()
 dtree = dtree.fit(X, Y)
 
-#Contrainte  [2,4,-6,-7] [2,-3,6,7]
 
-"""print(dtree.predict(test_x))
-
-print("[1] means 'malade'")
-print("[0] means 'no malade'")"""
 
 def decision():
 
@@ -64,7 +53,6 @@ def decision():
         'YES': 7,
         } .get(MP.upper(), None)
     
-    #EnvironnementsNumber=8 if Environnements.upper()=='YES' else -8
 
     listOfInformation=[age,SexeNumber,MPNumber,modeRecessifNumber]
 
@@ -79,7 +67,6 @@ def decision():
     except Exception:
         print("Error information")
     
-    #print(dtree.predict(test_x))
     
 if __name__=='__main__':
     decision()
