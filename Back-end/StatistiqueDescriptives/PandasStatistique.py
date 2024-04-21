@@ -1,10 +1,5 @@
 import pandas as pd
 
-from sklearn.model_selection import train_test_split
-import time
-from sklearn.neighbors import KNeighborsClassifier
-
-
 data = pd.read_excel("C:\\Users\\kella\\Desktop\\Traitement-des-patients-reduites\\Back-end\\dataSet\\dataSetNumbers.xlsx",sheet_name=1)
 #moyenne, colleration, medium, les notions statistiques, plot,..
 
