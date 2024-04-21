@@ -13,7 +13,7 @@ features=['age','Sexe','Transmission genetique','mode recessif(heriditaire)']
 X=data[features]
 Y=data['hemophilie']
 
-#moyenne, colleration, medium, les notions statistiques, plot,..
+
 
 #vision de BackEnd 
 
