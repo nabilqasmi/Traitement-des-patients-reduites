@@ -96,5 +96,5 @@ Tu dois télecharger Un emulator(Running Device)  un mini telephone de type Andr
 
 ### Date de sortie de l'application
 
-NOTRE_APPLICATION sera disponible le 20 mai, Tenez vous prêt !!
+NOTRE_APPLICATION sera disponible le 7 juin, Tenez vous prêt !!
 
