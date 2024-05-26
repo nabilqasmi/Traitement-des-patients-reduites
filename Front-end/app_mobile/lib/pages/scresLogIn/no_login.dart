@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../indxes/sign_up.dart';
+
+import '../scresSignUp/sign_up1.dart';
 
 class NoLogin extends StatelessWidget {
   const NoLogin({super.key});
@@ -11,7 +12,7 @@ class NoLogin extends StatelessWidget {
       onTap: (){
         Navigator.push(context, MaterialPageRoute(
             builder: (context){
-              return SignUp();
+              return SignUpp();
             }
         ));
       },

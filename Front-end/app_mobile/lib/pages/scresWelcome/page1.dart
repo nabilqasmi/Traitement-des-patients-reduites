@@ -17,7 +17,6 @@ class Page1 extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Container(
-
                 height: 500,
                 padding: EdgeInsets.only(right: 0,top: 90),
                 child: Center(

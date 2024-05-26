@@ -1,35 +1,42 @@
+import 'package:app_mobile/pages/MVC/models/Patient.dart';
+import 'package:app_mobile/pages/scresSignUp/picture.dart';
 import 'package:flutter/material.dart';
-import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-
-import '../scresWelcome/page1.dart';
-import '../scresWelcome/page2.dart';
 
 
-// Consider renaming "SignUpp" to a more descriptive name (e.g., SignUpWizard)
 class SignUpp2 extends StatefulWidget {
-  const SignUpp2({super.key});
+  final Patient patient;
 
+  const  SignUpp2({Key? key, required this.patient}) : super(key: key);
   @override
-  State<SignUpp2> createState() => _SignUpWizardState();
+  State<SignUpp2> createState() => _SignUpWizardState(this.patient);
 }
 
 class _SignUpWizardState extends State<SignUpp2> {
-  final PageController _controller = PageController(initialPage: 0);
-  final _formKey = GlobalKey<FormState>();
 
-  // Text editing controllers for form fields
-  final TextEditingController nom = TextEditingController();
-  final TextEditingController prenom = TextEditingController();
-  final TextEditingController date = TextEditingController();
-  final TextEditingController adresse = TextEditingController();
+  final PageController _controller = PageController();
+  final _formKey = GlobalKey<FormState>();
   bool _obscureText = true;
 
+  _SignUpWizardState(Patient patient);
+  final  tele = TextEditingController();
+  final  adresse=TextEditingController();
+  final motpasse=TextEditingController();
+  final motpasse2=TextEditingController();
+  var tel="";
+  var adr="";
+  var mot1="";
+
+  @override
+  void dispose() {
+    tele.dispose();
+    adresse.dispose();
+    motpasse.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
-
         child: Stack(
           children: <Widget>[
             Container(
@@ -67,10 +74,10 @@ class _SignUpWizardState extends State<SignUpp2> {
                               prefixIcon: Icon(Icons.add_call),
                               border: OutlineInputBorder(borderSide: BorderSide(width: 10)),
                             ),
-                            controller: nom,
+                            controller: tele,
                             validator: (value){
                               if(value==null || value.isEmpty){
-                                return "Tu dois completer ce texte";
+                                return "Erreur...";
                               }
                               return null;
                             }
@@ -80,16 +87,19 @@ class _SignUpWizardState extends State<SignUpp2> {
                       Container(
                         padding: EdgeInsets.only(left: 10,right: 10),
                         child: TextFormField(
+                            onChanged: (value){
+
+                            },
                             decoration: const InputDecoration(
                               labelText: 'Votre Adresse',
                               hintText: 'Adresse',
                               prefixIcon: Icon(Icons.home),
                               border: OutlineInputBorder(borderSide: BorderSide(width: 10)),
                             ),
-                            controller: prenom,
+                            controller: adresse,
                             validator: (value){
                               if(value==null || value.isEmpty){
-                                return "Tu dois completer ce texte";
+                                return "Erreur...";
                               }
                               return null;
                             }
@@ -99,9 +109,12 @@ class _SignUpWizardState extends State<SignUpp2> {
                       Container(
                         padding: EdgeInsets.only(left: 10,right: 10),
                         child: TextFormField(
+                          onChanged: (value){
+
+                          },
                           obscureText: _obscureText,
                           decoration: InputDecoration(
-                            labelText: 'Votre mot passe',
+                            labelText: 'Votre mot de passe',
                             hintText: 'mot passe',
                             border: OutlineInputBorder(borderSide: BorderSide(width: 10)),
                             suffixIcon: IconButton(
@@ -113,15 +126,17 @@ class _SignUpWizardState extends State<SignUpp2> {
                               },
                             ),
                           ),
+                          controller: motpasse,
                         ),
                       ),
                       SizedBox(height: 20,),
                       Container(
                         padding: EdgeInsets.only(left: 10,right: 10),
                         child: TextFormField(
+
                           obscureText: _obscureText,
                           decoration: InputDecoration(
-                            labelText: 'Confirmer votre mot passe',
+                            labelText: 'Confirmer votre mot de passe',
                             hintText: 'mot passe',
                             border: OutlineInputBorder(borderSide: BorderSide(width: 10)),
                             suffixIcon: IconButton(
@@ -133,8 +148,64 @@ class _SignUpWizardState extends State<SignUpp2> {
                               },
                             ),
                           ),
+                          controller: motpasse2,
+                            validator: (value){
+                              if(value!=motpasse.text || value==Null){
+                                return "Erreur...";
+                              }
+                              return null;
+                            }
                         ),
                       ),
+                      Container(
+                        child: Row(
+                          children: [
+
+                            Container(
+                              padding: EdgeInsets.only(top: 100,left: 50),
+                              child: TextButton(
+                                onPressed: (){},
+                                child: Text("Go Back",style: TextStyle(color: Colors.green),),
+                              ),
+                            ),
+
+                            Container(
+                              padding: EdgeInsets.only(top: 100,left: 100),
+                              child:ElevatedButton(
+                                onPressed: () {
+                                  if(_formKey.currentState!.validate()){
+
+                                    tel=tele.text;
+                                    widget.patient.numTele=tel;
+
+                                    adr=adresse.text;
+                                    widget.patient.adresse=adr;
+
+                                    mot1=motpasse.text;
+                                    widget.patient.motpasse=mot1;
+
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) =>  Picture1(patient: widget.patient,),
+                                      ),
+                                    );
+                                  }
+                                },
+                                child: Text("Next",style: TextStyle(color: Colors.white),),
+                                style: ButtonStyle(
+                                  minimumSize: MaterialStateProperty.all(Size(150, 60)),
+                                  shape: MaterialStatePropertyAll(RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))),
+                                  backgroundColor: MaterialStateProperty.all(Colors.black12),
+
+                                ),
+                              ),
+                              // Set the button text
+                            ),
+                          ],
+                        ),
+                      ),
+
                     ],
                   )),
             ),
@@ -144,16 +215,4 @@ class _SignUpWizardState extends State<SignUpp2> {
     );
   }
 
-  Future<void> _selectedDate() async{
-    DateTime? picked= await showDatePicker(
-        context: context,
-        initialDate: DateTime.now(),
-        firstDate: DateTime(2000),
-        lastDate: DateTime(2100));
-    if(picked !=null){
-      setState(() {
-        date.text=picked.toString().split(" ")[0];
-      });
-    }
-  }
 }

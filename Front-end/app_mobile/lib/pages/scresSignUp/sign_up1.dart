@@ -1,11 +1,10 @@
+
+import 'package:app_mobile/pages/scresSignUp/sign_up2.dart';
 import 'package:flutter/material.dart';
-import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-import '../scresWelcome/page1.dart';
-import '../scresWelcome/page2.dart';
+import '../MVC/models/Patient.dart';
 
 
-// Consider renaming "SignUpp" to a more descriptive name (e.g., SignUpWizard)
 class SignUpp extends StatefulWidget {
   const SignUpp({super.key});
 
@@ -14,16 +13,35 @@ class SignUpp extends StatefulWidget {
 }
 
 class _SignUpWizardState extends State<SignUpp> {
+
+  void _coordonnate(PointerEvent details){
+    double x=details.position.dx;
+    double y=details.position.dy;
+
+    print(x);
+    print(y);
+  }
+
   final PageController _controller = PageController(initialPage: 0);
   final _formKey = GlobalKey<FormState>();
+  Patient patient=new Patient();
 
-  // Text editing controllers for form fields
-  final TextEditingController nom = TextEditingController();
-  final TextEditingController prenom = TextEditingController();
-  final TextEditingController date = TextEditingController();
-  final TextEditingController adresse = TextEditingController();
+  final  date = TextEditingController();
+  final  nom=TextEditingController();
+  final prenom=TextEditingController();
+  final Email=TextEditingController();
+  var name="";
+  var pr="";
+  var dat="";
+  var ema="";
 
-
+  @override
+  void dispose() {
+    nom.dispose();
+    prenom.dispose();
+    Email.dispose();
+    date.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -58,7 +76,8 @@ class _SignUpWizardState extends State<SignUpp> {
               child: Form(
                   key: _formKey,
                   child: Column(
-                    children: [
+                    children: <Widget>[
+
                       Container(
                         padding: EdgeInsets.only(left: 10,right: 10),
                         child: TextFormField(
@@ -67,13 +86,7 @@ class _SignUpWizardState extends State<SignUpp> {
                               hintText: 'nom',
                               border: OutlineInputBorder(borderSide: BorderSide(width: 10)),
                             ),
-                            controller: nom,
-                            validator: (value){
-                              if(value==null || value.isEmpty){
-                                return "Tu dois completer ce texte";
-                              }
-                              return null;
-                            }
+                              controller: nom,
                         ),
                       ),
                       SizedBox(height: 20,),
@@ -86,12 +99,6 @@ class _SignUpWizardState extends State<SignUpp> {
                               border: OutlineInputBorder(borderSide: BorderSide(width: 10)),
                             ),
                             controller: prenom,
-                            validator: (value){
-                              if(value==null || value.isEmpty){
-                                return "Tu dois completer ce texte";
-                              }
-                              return null;
-                            }
                         ),
                       ),
                       SizedBox(height: 20,),
@@ -109,7 +116,6 @@ class _SignUpWizardState extends State<SignUpp> {
                           onTap: (){
                             _selectedDate();
                           },
-
                         ),
                       ),
                       SizedBox(height: 20,),
@@ -122,15 +128,66 @@ class _SignUpWizardState extends State<SignUpp> {
                               prefixIcon: Icon(Icons.email),
                               border: OutlineInputBorder(borderSide: BorderSide(width: 10)),
                             ),
-                            controller:adresse,
-                            validator: (value){
-                              if(value==null || value.isEmpty){
-                                return "Tu dois completer ce texte";
-                              }
-                              return null;
-                            }
+                            controller: Email,
                         ),
                       ),
+                      Container(
+                        child: Row(
+                          children: [
+
+                            Container(
+                              padding: EdgeInsets.only(top: 100,left: 50),
+                              child: TextButton(
+                                onPressed: (){},
+                                child: Text("Go Back",style: TextStyle(color: Colors.green),),
+                              ),
+                            ),
+
+                            Container(
+                              padding: EdgeInsets.only(top: 100,left: 100),
+                              child:ElevatedButton(
+                                      onPressed: () {
+                                        if(_formKey.currentState!.validate()){
+
+                                          name=nom.text;
+                                          patient.nom=name;
+
+                                          pr=prenom.text;
+                                          patient.prenom=pr;
+
+                                          dat=date.text;
+                                          patient.dateNaissance=dat;
+
+                                          ema=Email.text;
+                                          patient.Email=ema;
+
+                                          /*print(name);
+                                          print(pr);
+                                          print(dat);
+                                          print(ema);*/
+                                          Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                              builder: (context) =>  SignUpp2(
+                                                patient:patient
+                                              ),
+                                            ),
+                                          );
+                                        }
+                                      },
+                                      child: Text("Next",style: TextStyle(color: Colors.white),),
+                                        style: ButtonStyle(
+                                        minimumSize: MaterialStateProperty.all(Size(150, 60)),
+                                        shape: MaterialStatePropertyAll(RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))),
+                                        backgroundColor: MaterialStateProperty.all(Colors.black12),
+
+                                        ),
+                                    ),
+                                // Set the button text
+                              ),
+                          ],
+                        ),
+                      )
                     ],
                   )),
             ),
@@ -152,4 +209,5 @@ class _SignUpWizardState extends State<SignUpp> {
       });
     }
   }
+
 }
