@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 import '../MVC/Controller/Controller.dart';
 import '../MVC/models/Patient.dart';
+import '../indxes/PageLoginSignUp/login_sign_up.dart';
+import 'iaresponse.dart';
 
 class Formulaire extends StatefulWidget {
   final Patient patient;
@@ -138,7 +140,7 @@ class _FormulaireState extends State<Formulaire> {
                               });
                             },
                           ),
-                          Text("Homme")
+                          Text("Masculin ")
                         ],
                       )
                       ,
@@ -155,7 +157,7 @@ class _FormulaireState extends State<Formulaire> {
                               });
                             },
                           ),
-                          Text("Femme")
+                          Text("Féminin")
                         ],
                       )
                     ],
@@ -285,8 +287,15 @@ class _FormulaireState extends State<Formulaire> {
                       Container(
                         padding: EdgeInsets.only(top: 660,left: 50),
                         child: TextButton(
-                          onPressed: (){},
-                          child: Text("Go Back",style: TextStyle(color: Colors.green),),
+                          onPressed: (){
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>  LSU()
+                              ),
+                            );
+                          },
+                          child: Text("Go Out",style: TextStyle(color: Colors.green),),
                         ),
                       ),
 
@@ -321,8 +330,15 @@ class _FormulaireState extends State<Formulaire> {
                             print("Antecedent hemophilie Mere: "+widget.patient.anteHemomere);
                             widget.patient.anteHemopere=aOP;
                             print("Antecedent hemophilie Pere: "+widget.patient.anteHemopere);*/
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) =>  IaResponse(),
+                              ),
+                            );
                             DataPatient(widget.patient);
                           },
+
                           child: Text("Next",style: TextStyle(color: Colors.white),),
                           style: ButtonStyle(
                             minimumSize: MaterialStateProperty.all(Size(150, 60)),

@@ -1,9 +1,7 @@
 import 'dart:typed_data';
-
 import 'package:app_mobile/pages/MVC/models/Patient.dart';
-
 import 'package:flutter/material.dart';
-
+import '../indxes/PageLoginSignUp/login_sign_up.dart';
 import 'formulaire.dart';
 
 class  Picture1 extends StatefulWidget {
@@ -59,8 +57,15 @@ Uint8List? _image;
                   Container(
                     padding: EdgeInsets.only(top: 400,left: 50),
                     child: TextButton(
-                      onPressed: (){},
-                      child: Text("Go Back",style: TextStyle(color: Colors.green),),
+                      onPressed: (){
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>  LSU()
+                          ),
+                        );
+                      },
+                      child: Text("Go Out",style: TextStyle(color: Colors.green),),
                     ),
                   ),
 

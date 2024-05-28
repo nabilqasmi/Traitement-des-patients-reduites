@@ -16,7 +16,7 @@ class LogIn extends StatefulWidget {
 }
 
 class _LogInState extends State<LogIn> {
-  final  nom = TextEditingController();
+  final  nomutilisateur = TextEditingController();
   final  mdp=TextEditingController();
 
   var Nm="";
@@ -24,7 +24,7 @@ class _LogInState extends State<LogIn> {
 
   @override
   void dispose() {
-    nom.dispose();
+    nomutilisateur.dispose();
     mdp.dispose();
   }
   @override
@@ -52,7 +52,7 @@ class _LogInState extends State<LogIn> {
                         hintText: "nom d'utilisateur",
                         border: OutlineInputBorder(borderSide: BorderSide(width: 10)),
                       ),
-                      controller: nom,
+                      controller: nomutilisateur,
                       validator: (value){
                         if(value==null || value.isEmpty){
                           return "Tu dois completer ce texte";
@@ -95,7 +95,7 @@ class _LogInState extends State<LogIn> {
                 SizedBox(height: 20,),
                 GestureDetector(
               onTap: ()async{
-                Nm=nom.text;
+                Nm=nomutilisateur.text;
                 Mp=mdp.text;
                 /*print(Nm);
                 print(Mp);*/
@@ -148,7 +148,9 @@ class _LogInState extends State<LogIn> {
               ),
             ),
                 SizedBox(height: 10,),
-                NoLogin()
+                NoLogin(),
+                SizedBox(height: 40,),
+                Text("Veuillez vous connecter à un réseau Wi-Fi",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 15,color: Colors.red),)
               ],
             ),
           ),

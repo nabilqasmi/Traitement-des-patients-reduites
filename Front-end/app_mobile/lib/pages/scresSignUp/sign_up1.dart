@@ -1,213 +1,260 @@
+  import 'package:app_mobile/pages/indxes/PageLoginSignUp/login_sign_up.dart';
+  import 'package:app_mobile/pages/scresSignUp/sign_up2.dart';
+  import 'package:flutter/material.dart';
 
-import 'package:app_mobile/pages/scresSignUp/sign_up2.dart';
-import 'package:flutter/material.dart';
-
+  import '../MVC/Controller/Controller.dart';
 import '../MVC/models/Patient.dart';
 
 
-class SignUpp extends StatefulWidget {
-  const SignUpp({super.key});
+  class SignUpp extends StatefulWidget {
+    const SignUpp({super.key});
 
-  @override
-  State<SignUpp> createState() => _SignUpWizardState();
-}
-
-class _SignUpWizardState extends State<SignUpp> {
-
-  void _coordonnate(PointerEvent details){
-    double x=details.position.dx;
-    double y=details.position.dy;
-
-    print(x);
-    print(y);
+    @override
+    State<SignUpp> createState() => _SignUpWizardState();
   }
 
-  final PageController _controller = PageController(initialPage: 0);
-  final _formKey = GlobalKey<FormState>();
-  Patient patient=new Patient();
+  class _SignUpWizardState extends State<SignUpp> {
 
-  final  date = TextEditingController();
-  final  nom=TextEditingController();
-  final prenom=TextEditingController();
-  final Email=TextEditingController();
-  var name="";
-  var pr="";
-  var dat="";
-  var ema="";
+    void _coordonnate(PointerEvent details){
+      double x=details.position.dx;
+      double y=details.position.dy;
 
-  @override
-  void dispose() {
-    nom.dispose();
-    prenom.dispose();
-    Email.dispose();
-    date.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: SingleChildScrollView(
-
-        child: Stack(
-          children: <Widget>[
-            Container(
-                child: Center(
-                  child:
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Container(
-                        padding: EdgeInsets.only(top: 100),
-                        child: Column(
-                          children: [
-                            Text("Bonjour et bienvenue sur",style: TextStyle(color: Colors.green,fontSize: 20),),
-                            Text("HemoConnect ! Nous sommes ravis",style: TextStyle(color: Colors.green,fontSize: 20),),
-                            Text("de vous accueillir",style: TextStyle(color: Colors.green,fontSize: 20),)
-                          ],
-                        ),
-
-                      ),
-                    ],
-                  ),
-                )
-            ),
-            Container(
-              padding: EdgeInsets.only(top:240),
-              child: Form(
-                  key: _formKey,
-                  child: Column(
-                    children: <Widget>[
-
-                      Container(
-                        padding: EdgeInsets.only(left: 10,right: 10),
-                        child: TextFormField(
-                            decoration: InputDecoration(
-                              labelText: 'Votre nom',
-                              hintText: 'nom',
-                              border: OutlineInputBorder(borderSide: BorderSide(width: 10)),
-                            ),
-                              controller: nom,
-                        ),
-                      ),
-                      SizedBox(height: 20,),
-                      Container(
-                        padding: EdgeInsets.only(left: 10,right: 10),
-                        child: TextFormField(
-                            decoration: InputDecoration(
-                              labelText: 'Votre prenom',
-                              hintText: 'prenom',
-                              border: OutlineInputBorder(borderSide: BorderSide(width: 10)),
-                            ),
-                            controller: prenom,
-                        ),
-                      ),
-                      SizedBox(height: 20,),
-                      Container(
-                        padding: EdgeInsets.only(left: 10,right: 10),
-                        child: TextFormField(
-                          controller: date,
-                          decoration: InputDecoration(
-                            labelText: 'Votre Date de Naissance',
-                            hintText: 'Date de Naissance',
-                            prefixIcon: Icon(Icons.calendar_today),
-                            border: OutlineInputBorder(borderSide: BorderSide(width: 10)),
-                          ),
-                          readOnly: true,
-                          onTap: (){
-                            _selectedDate();
-                          },
-                        ),
-                      ),
-                      SizedBox(height: 20,),
-                      Container(
-                        padding: EdgeInsets.only(left: 10,right: 10),
-                        child: TextFormField(
-                            decoration: InputDecoration(
-                              labelText: 'Votre Email',
-                              hintText: 'Email',
-                              prefixIcon: Icon(Icons.email),
-                              border: OutlineInputBorder(borderSide: BorderSide(width: 10)),
-                            ),
-                            controller: Email,
-                        ),
-                      ),
-                      Container(
-                        child: Row(
-                          children: [
-
-                            Container(
-                              padding: EdgeInsets.only(top: 100,left: 50),
-                              child: TextButton(
-                                onPressed: (){},
-                                child: Text("Go Back",style: TextStyle(color: Colors.green),),
-                              ),
-                            ),
-
-                            Container(
-                              padding: EdgeInsets.only(top: 100,left: 100),
-                              child:ElevatedButton(
-                                      onPressed: () {
-                                        if(_formKey.currentState!.validate()){
-
-                                          name=nom.text;
-                                          patient.nom=name;
-
-                                          pr=prenom.text;
-                                          patient.prenom=pr;
-
-                                          dat=date.text;
-                                          patient.dateNaissance=dat;
-
-                                          ema=Email.text;
-                                          patient.Email=ema;
-
-                                          /*print(name);
-                                          print(pr);
-                                          print(dat);
-                                          print(ema);*/
-                                          Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                              builder: (context) =>  SignUpp2(
-                                                patient:patient
-                                              ),
-                                            ),
-                                          );
-                                        }
-                                      },
-                                      child: Text("Next",style: TextStyle(color: Colors.white),),
-                                        style: ButtonStyle(
-                                        minimumSize: MaterialStateProperty.all(Size(150, 60)),
-                                        shape: MaterialStatePropertyAll(RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))),
-                                        backgroundColor: MaterialStateProperty.all(Colors.black12),
-
-                                        ),
-                                    ),
-                                // Set the button text
-                              ),
-                          ],
-                        ),
-                      )
-                    ],
-                  )),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-
-  Future<void> _selectedDate() async{
-    DateTime? picked= await showDatePicker(
-        context: context,
-        initialDate: DateTime.now(),
-        firstDate: DateTime(2000),
-        lastDate: DateTime(2100));
-    if(picked !=null){
-      setState(() {
-        date.text=picked.toString().split(" ")[0];
-      });
+      print(x);
+      print(y);
     }
-  }
 
-}
+    final PageController _controller = PageController(initialPage: 0);
+    final _formKey = GlobalKey<FormState>();
+    Patient patient=new Patient();
+
+    final  date = TextEditingController();
+    final  nom=TextEditingController();
+    final prenom=TextEditingController();
+    final Email=TextEditingController();
+    var name="";
+    var pr="";
+    var dat="";
+    var ema="";
+
+    @override
+    void dispose() {
+      nom.dispose();
+      prenom.dispose();
+      Email.dispose();
+      date.dispose();
+    }
+
+    @override
+    Widget build(BuildContext context) {
+      return Scaffold(
+        body: SingleChildScrollView(
+
+          child: Stack(
+            children: <Widget>[
+              Container(
+                  child: Center(
+                    child:
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Container(
+                          padding: EdgeInsets.only(top: 100),
+                          child: Column(
+                            children: [
+                              Container(
+                                padding: EdgeInsets.only(left: 10,right: 10,top: 0,bottom: 15),
+                                child: Text("Veuillez vous connecter à un réseau Wi-Fi",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 15,color: Colors.red),),
+                              ),
+                              Text("Bonjour et bienvenue sur",style: TextStyle(color: Colors.green,fontSize: 20),),
+                              Text("HemoConnect ! Nous sommes ravis",style: TextStyle(color: Colors.green,fontSize: 20),),
+                              Text("de vous accueillir",style: TextStyle(color: Colors.green,fontSize: 20),)
+                            ],
+                          ),
+
+                        ),
+                      ],
+                    ),
+                  )
+              ),
+              Container(
+                padding: EdgeInsets.only(top:240),
+                child: Form(
+                    key: _formKey,
+                    child: Column(
+                      children: <Widget>[
+                        Container(
+                          padding: EdgeInsets.only(left: 10,right: 10),
+                          child: TextFormField(
+                              decoration: InputDecoration(
+                                labelText: "Votre nom d'utilisateur",
+                                hintText: 'Nom utilisateur',
+                                border: OutlineInputBorder(borderSide: BorderSide(width: 10)),
+                              ),
+                                controller: nom,
+                              validator: (value){
+                                if(value==null || value.isEmpty){
+                                  return "Erreur...";
+                                }
+                                return null;
+                              }
+                          ),
+                        ),
+                        SizedBox(height: 20,),
+                        Container(
+                          padding: EdgeInsets.only(left: 10,right: 10),
+                          child: TextFormField(
+                              decoration: InputDecoration(
+                                labelText: 'Votre nom complet',
+                                hintText: 'Nom complet',
+                                border: OutlineInputBorder(borderSide: BorderSide(width: 10)),
+                              ),
+                              controller: prenom,
+                              validator: (value){
+                                if(value==null || value.isEmpty){
+                                  return "Erreur...";
+                                }
+                                return null;
+                              }
+                          ),
+                        ),
+                        SizedBox(height: 20,),
+                        Container(
+                          padding: EdgeInsets.only(left: 10,right: 10),
+                          child: TextFormField(
+                            controller: date,
+                            decoration: InputDecoration(
+                              labelText: 'Votre Date de Naissance',
+                              hintText: 'Date de Naissance',
+                              prefixIcon: Icon(Icons.calendar_today),
+                              border: OutlineInputBorder(borderSide: BorderSide(width: 10)),
+                            ),
+                            readOnly: true,
+                            onTap: (){
+                              _selectedDate();
+                            },
+                              validator: (value){
+                                if(value==null || value.isEmpty){
+                                  return "Erreur...";
+                                }
+                                return null;
+                              }
+                          ),
+                        ),
+                        SizedBox(height: 20,),
+                        Container(
+                          padding: EdgeInsets.only(left: 10,right: 10),
+                          child: TextFormField(
+                              decoration: InputDecoration(
+                                labelText: 'Votre Email',
+                                hintText: 'Email',
+                                prefixIcon: Icon(Icons.email),
+                                border: OutlineInputBorder(borderSide: BorderSide(width: 10)),
+                              ),
+                              controller: Email,
+                              validator: (value){
+                                if(value==null || value.isEmpty){
+                                  return "Erreur...";
+                                }
+                                return null;
+                              }
+                          ),
+                        ),
+                        Container(
+                          child: Row(
+                            children: [
+                              Container(
+                                padding: EdgeInsets.only(top: 100,left: 50),
+                                child: TextButton(
+                                  onPressed: (){
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) =>  LSU()
+                                      ),
+                                    );
+                                  },
+                                  child: Text("Go Out",style: TextStyle(color: Colors.green),),
+                                ),
+                              ),
+                              Container(
+                                padding: EdgeInsets.only(top: 100,left: 100),
+                                child:ElevatedButton(
+                                        onPressed: () async{
+                                          if(_formKey.currentState!.validate()){
+
+                                            name=nom.text;
+                                            patient.nomutilisateur=name;
+
+                                            pr=prenom.text;
+                                            patient.Nomcomplet=pr;
+
+                                            dat=date.text;
+                                            patient.dateNaissance=dat;
+                                            String valeur=await DataCheckAge(dat);
+                                            ema=Email.text;
+                                            patient.Email=ema;
+
+                                            /*print(name);
+                                            print(pr);
+                                            print(dat);
+                                            print(ema);*/
+                                            print(valeur.split(":")[2]);
+                                            print("true");
+                                            if(valeur.split(":")[2]==" true"){
+                                              Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+                                                  builder: (context) =>  SignUpp2(
+                                                      patient:patient
+                                                  ),
+                                                ),
+                                              );
+                                            }
+                                            else{
+                                              showDialog(
+                                                  context: context,
+                                                  builder: (BuildContext context){
+                                                    return AlertDialog(
+                                                      title: Text("Votre âge est inadapté."),
+                                                    );
+                                                  }
+                                              );
+                                            }
+                                          }
+                                        },
+                                        child: Text("Next",style: TextStyle(color: Colors.white),),
+                                          style: ButtonStyle(
+                                          minimumSize: MaterialStateProperty.all(Size(150, 60)),
+                                          shape: MaterialStatePropertyAll(RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))),
+                                          backgroundColor: MaterialStateProperty.all(Colors.black12),
+
+                                          ),
+                                      ),
+                                  // Set the button text
+                                ),
+                            ],
+                          ),
+                        )
+                      ],
+                    )),
+              ),
+            ],
+          ),
+        ),
+      );
+    }
+
+    Future<void> _selectedDate() async{
+      DateTime? picked= await showDatePicker(
+          context: context,
+          initialDate: DateTime.now(),
+          firstDate: DateTime(2000),
+          lastDate: DateTime(2100));
+      if(picked !=null){
+        setState(() {
+          date.text=picked.toString().split(" ")[0];
+        });
+      }
+    }
+
+  }

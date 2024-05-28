@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import '../../MVC/Controller/Controller.dart';
 import '../../MVC/models/Patient.dart';
 import '../Categories/Seance_Reduction/seance_red.dart';
+import '../Categories/SuivActivite/TEST/graphePas.dart';
 import '../Categories/SuivActivite/suiv_act.dart';
 import '../Categories/rappel_medica/rapp_med.dart';
 import 'Notifications/rendezvous.dart';
@@ -68,7 +69,7 @@ class _HomeState extends State<Home> {
                           mainAxisAlignment:MainAxisAlignment.spaceBetween,
                           children:  <Widget>[
                             Text(
-                                'Hello ${patient.nom}',
+                                'Bonjour ${patient.nomutilisateur}',
                                 style: TextStyle(
                                   fontSize: 30,
                                   fontWeight: FontWeight.bold
@@ -116,7 +117,7 @@ class _HomeState extends State<Home> {
                         child: const Text(
                           " Categories",
                           style: TextStyle(
-                              fontSize: 16,
+                              fontSize: 25,
                               fontWeight: FontWeight.bold
                           ),
                         ),
@@ -125,83 +126,100 @@ class _HomeState extends State<Home> {
                         children: [
                           Row(
                             children: [
-                              Container(
-                                  child:TextButton(
-                                    onPressed: (){
-                                      Navigator.push(context, MaterialPageRoute(
-                                          builder: (context){
-                                            return RappMed();
-                                          }
-                                      ));
-                                    },
-                                    child: Image.asset(
-                                        "assets/images/RappelMEed.jpg",
-                                        height: 200,
-                                        width: 170,
+                              Column(
+                                children: [
+                                  Container(
+                                      child:TextButton(
+                                        onPressed: (){
+                                          Navigator.push(context, MaterialPageRoute(
+                                              builder: (context){
+                                                return RappMed();
+                                              }
+                                          ));
+                                        },
+                                        child: Image.asset(
+                                            "assets/images/RappelMEed.jpg",
+                                            height: 130,
+                                            width: 170,
+                                          ),
                                       ),
                                   ),
+                                  Text("Rappel de médicament",style: TextStyle(color: Colors.green,fontWeight: FontWeight.bold),)
+                                ],
                               ),
+                              //Text("Rappel de medicament"),
                               Padding(
                                 padding: EdgeInsets.only(left: 10),
-                                child: Container(
-                                    child: TextButton(
-                                      onPressed: ()async{
-                                        /*
-                                        * Patient? patient= await DataLogin(Nm, Mp) as Patient;
-                                          if(patient==null){
-                                            print("ERROR");
-                                        * */
-                                        Map<String, int>? nombreDePas = await DataSuiveActivite(patient.nom);
-                                        PasParJour().setPasJour(nombreDePas!);
-                                        Navigator.push(context, MaterialPageRoute(
-                                            builder: (context){
-                                              return SuiAct();
-                                            }
-                                        ));
-                                      },
-                                      child: Image.asset(
-                                          "assets/images/SuiveAct.jpg",
-                                          height: 200,
-                                          width: 170,
-                                      ),
-                                    )),
+                                child: Column(
+                                  children: [
+                                    Container(
+                                        child: TextButton(
+                                          onPressed: ()async{
+                                            Map<String, int>? nombreDePas = await DataSuiveActivite(patient.nomutilisateur);
+                                            PasParJour().setPasJour(nombreDePas!);
+                                            Navigator.push(context, MaterialPageRoute(
+                                                builder: (context){
+                                                  return Graphepas();
+                                                }
+                                            ));
+                                          },
+                                          child: Image.asset(
+                                              "assets/images/SuiveAct.jpg",
+                                              height: 130,
+                                              width: 170,
+                                          ),
+                                        )),
+                                    Text("Pas quotidienne",style: TextStyle(color: Colors.green,fontWeight: FontWeight.bold),)
+                                  ],
+                                ),
                               ),
                             ],
                           ),
+                          SizedBox(height: 30,),
                           Row(
                             children: [
-                              Container(
-                                child:TextButton(
-                                  onPressed: (){
-                                        Navigator.push(context, MaterialPageRoute(
-                                            builder: (context){
-                                                return SeanceRed();
-                                            }
-                                          ));
-                                        },
-                                  child: Image.asset(
-                                    "assets/images/Reduction.jpg",
-                                    height: 200,
-                                    width: 170,
+                              Column(
+                                children: [
+                                  Container(
+                                    child:TextButton(
+                                      onPressed: (){
+                                            Navigator.push(context, MaterialPageRoute(
+                                                builder: (context){
+                                                    return SeanceRed();
+                                                }
+                                              ));
+                                            },
+                                      child: Image.asset(
+                                        "assets/images/Reduction.jpg",
+                                        height: 130,
+                                        width: 170,
+                                      ),
+                                    ),
                                   ),
-                                ),
+                                  Text("Seance de réduction",style: TextStyle(color: Colors.green,fontWeight: FontWeight.bold),)
+                                ],
                               ),
                               Padding(
                                 padding: EdgeInsets.only(left: 10),
-                                child: Container(
-                                    child: TextButton(
-                                      onPressed: (){ Navigator.push(context, MaterialPageRoute(
-                                          builder: (context){
-                                            return RendezVous();
-                                          }
-                                      ));
-                                      },
-                                      child: Image.asset(
-                                        "assets/images/NoteMed.jpg",
-                                        height: 200,
-                                        width: 170,
-                                      ),
-                                    )),
+                                child: Column(
+                                  children: [
+                                    Container(
+                                        child: TextButton(
+                                          onPressed: (){ Navigator.push(context, MaterialPageRoute(
+                                              builder: (context){
+                                                return RendezVous();
+                                              }
+                                          ));
+                                          },
+                                          child: Image.asset(
+                                            "assets/images/NoteMed.jpg",
+                                            height: 130,
+                                            width: 170,
+                                          ),
+                                        )),
+                                    Text("Rendez-vous avec Medecin",style: TextStyle(color: Colors.green,fontWeight: FontWeight.bold),)
+                                  ],
+                                ),
                               ),
                             ],
                           )

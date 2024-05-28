@@ -3,8 +3,8 @@ from dataclasses import dataclass
 @dataclass
 class Patients:
     id:int
-    nom : str
-    prenom :str
+    nomutilisateur : str
+    Nomcomplet :str
     Date_Naissance :str
     email : str
     num_tel : str
@@ -21,8 +21,8 @@ class Patients:
     def to_dict(self):
         return {
             "id": self.id,
-            "nom": self.nom,
-            "prenom":self.prenom,
+            "nomutilisateur": self.nomutilisateur,
+            "Nomcomplet":self.Nomcomplet,
             "Date_Naissance":self.Date_Naissance,
             "email":self.email,
             "num_tel":self.num_tel,

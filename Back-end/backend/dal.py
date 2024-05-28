@@ -15,23 +15,23 @@ class DAOpatients:
 
     @staticmethod
     def newPatients(patient:Patients):
-        cur.execute('INSERT INTO Patient (Nom, Prenom, DateNaissance, Email, Telephone, Adresse, Motedepasse, image, Groupesanguin, Taille, Poids, Sexe, AntecedeantMere, AntecedeantPere) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)',(patient.nom,patient.prenom, patient.Date_Naissance,patient.email,patient.num_tel,patient.adresse,patient.mdp,patient.image,patient.GR_S,patient.taille,patient.poids,patient.sexe,patient.antecedant_mere,patient.antecedant_pere))
+        cur.execute('INSERT INTO Patient (NomUtilisateur, Nomcomplet, DateNaissance, Email, Telephone, Adresse, Motedepasse, image, Groupesanguin, Taille, Poids, Sexe, AntecedeantMere, AntecedeantPere) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)',(patient.nomutilisateur,patient.Nomcomplet,patient.Date_Naissance,patient.email,patient.num_tel,patient.adresse,patient.mdp,patient.image,patient.GR_S,patient.taille,patient.poids,patient.sexe,patient.antecedant_mere,patient.antecedant_pere))
         con.commit()
     
     @staticmethod
     def deletePatient(id:int):
-        cur.execute("DELETE FROM Patients where id=%s",(id,))
+        cur.execute("DELETE FROM Patient where Id=%s",(id,))
         con.commit()
 
 
     @staticmethod
-    def updatePatient(nom:str,mdp:str):
-        cur.execute("UPDATE Patients SET mdp=%s WHERE nom=%s", ( mdp ,nom,))
+    def updatePatient(NomUtilisateur:str,mdp:str):
+        cur.execute("UPDATE Patients SET mdp=%s WHERE NomUtilisateur=%s", ( mdp ,NomUtilisateur,))
         con.commit()
 
     @staticmethod
-    def logIn(nom:str,mdp:str):
-        cur.execute("select * from Patient where Nom=%s and Motedepasse=%s",(nom,mdp,))  
+    def logIn(NomUtilisateur:str,mdp:str):
+        cur.execute("select * from Patient where NomUtilisateur=%s and Motedepasse=%s",(NomUtilisateur,mdp,))  
         result=cur.fetchall() 
         return result 
     
@@ -46,15 +46,27 @@ class DAOpatients:
 
     @staticmethod
     def search(id:int):
-        cur.execute("select * from Patients where id=%s",(id,))
+        cur.execute("select * from Patient where id=%s",(id,))
         result=cur.fetchall()  
         return result
     
 
     @staticmethod
-    def patient_age(nom : str):
-        cur.execute("SELECT DateNaissance FROM Patient where Nom=%s",(nom,))
+    def patient_age1(NomUtilisateur : str):
+        cur.execute("SELECT DateNaissance FROM Patient where NomUtilisateur=%s",(NomUtilisateur,))
         result = cur.fetchall()
+        return result[0][0]
+    
+    @staticmethod
+    def patient_age2(dataNaissance : str):
+        cur.execute("SELECT DateNaissance FROM Patient where DateNaissance=%s",(dataNaissance,))
+        result = cur.fetchall()
+        return result[0][0]
+    
+    @staticmethod
+    def lastPatient():
+        cur.execute("SELECT * FROM Patient ORDER BY id DESC LIMIT 1")
+        result=cur.fetchall()
         return result
     
 class DAOmedicament:   
@@ -82,8 +94,10 @@ class DAOmedicament:
 if __name__=='__main__':
     #patient=Patients("nom","prenom","2024-05-25","Email","image.png","0621870090","Adresse","123","","","","","","")
     """DAOpatients.newPatients(patient)"""
-    medicament=Medicament("nom",100,"temps",8)
+    #medicament=Medicament("nom",100,"temps",8)
     #DAOmedicament.newMedicament(medicament)
     #DAOmedicament.deletemedicament(medicament)
     #print(DAOmedicament.search("nom"))
     #print(DAOpatients.logOut("Email","123"))
+    #print(DAOpatients.patient_age2("2020-05-28"))
+    #print(DAOpatients.lastPatient())

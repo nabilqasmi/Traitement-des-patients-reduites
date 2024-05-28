@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 import '../../../MVC/models/Patient.dart';
 import '../../../MVC/models/PatientData.dart';
-import 'PricePoints.dart';
-import 'lineChart.dart';
+import 'TEST/graphePas.dart';
+
 
 class SuiAct extends StatefulWidget {
   const SuiAct({super.key});
@@ -29,7 +29,7 @@ class _SuiActState extends State<SuiAct> {
 
   Widget content(){
     return Container(
-      child: LinecHART(pricePoints),
+      child: Graphepas(),
     );
   }
 }

@@ -1,10 +1,9 @@
-from dal import  DAOpatients,DAOmedicament
+from dal import DAOpatients,DAOmedicament
 from models import Patients,Medicament
 from datetime import datetime
-#from test import decision
+from test import decision
 
 class patientServices:
-   
     @staticmethod
     def addPatients(patients:Patients):
         return DAOpatients.newPatients(patients)
@@ -25,9 +24,9 @@ class patientServices:
     
 
     @staticmethod
-    def patient_age(nom: str):
-        result = DAOpatients.patient_age(nom)
-        date_naissance = result[0][0]
+    def patient_age1(nom: str):
+        result = DAOpatients.patient_age1(nom)
+        date_naissance = result
         return date_naissance
 
     @staticmethod
@@ -35,8 +34,7 @@ class patientServices:
         dict={}
         JoursPatient=[]
         JoursPasPatient=[]
-        #Phrases=[] des recommendations, des activtes a exploiter....
-        if 0 < int(age) <= 3:
+        if int(age) <= 3:
             JoursPatient=["Pas de recommandation spécifique pour les enfants de moins de 3 ans"]
             JoursPasPatient=[0]
 
@@ -79,6 +77,12 @@ class patientServices:
             dict[i]=j
         return dict
 
+
+    @staticmethod
+    def checkAge(age:int):
+        if(age<=3 or age>=101):
+            return False
+        return True
         
     @staticmethod
     def calculate_age(birth_date):
@@ -94,9 +98,25 @@ class patientServices:
         return patient
 
     
-    """@staticmethod
+    @staticmethod
+    def patient_age2(DateNaissance:str):
+        result =DAOpatients.patient_age2(DateNaissance)
+        return result
+
+    @staticmethod
     def DecisinoPatient(id:int):
-        return decision(id)"""
+        return decision(id)
+    
+    @staticmethod 
+    def search(id:int):
+        return DAOpatients.search(id)
+    
+    @staticmethod
+    def lastPatient():
+        result=DAOpatients.lastPatient()
+        patient=Patients(result[0][0],result[0][1],result[0][2],result[0][3],result[0][4],result[0][5],result[0][6],result[0][7],result[0][8],result[0][9],result[0][10],result[0][11],result[0][12],result[0][13],result[0][14])
+        return patient
+    
 class MedicamentService:
     @staticmethod
     def ajouterMedicament(medicament:Medicament):
@@ -108,8 +128,7 @@ class MedicamentService:
     
     @staticmethod
     def searchMed(nom:str):
-        return DAOmedicament.search(nom)    
-       
+        return DAOmedicament.search(nom)      
     
 if __name__=="__main__":
     #patient=Patients(1,"nabil","kella","10/04/2003","nabil.kella@gmail.com","0000000","image.jpg","A",1.80,77,"Homme","adresse","000","oui","non")
@@ -121,3 +140,10 @@ if __name__=="__main__":
     """medicament=Medicament("nom",100,"temps",8)
     MedicamentService.ajouterMedicament(medicament)"""
     #print(patientServices.LogOut("Email","123"))
+    #print(patientServices.checkAge(patientServices.calculate_age(patientServices.patient_age("2003-04-10"))))
+    #patientServices.pasParJours(patientServices.calculate_age(patientServices.patient_age(nomutilisateur)))
+    #print(patientServices.pasParJours(patientServices.calculate_age(patientServices.patient_age1("oth123"))))
+    #print((()))
+    #print(patientServices.checkAge(patientServices.calculate_age("2020-05-28")))
+    #print(patientServices.DecisinoPatient(23))
+    #print(patientServices.lastPatient())

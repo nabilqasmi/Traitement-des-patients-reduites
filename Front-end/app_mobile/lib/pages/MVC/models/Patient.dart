@@ -1,7 +1,7 @@
 class Patient{
   int id=0;
-  String nom='';
-  String prenom='';
+  String nomutilisateur='';
+  String Nomcomplet='';
   String dateNaissance='';
   String Email='';
   String image='';
@@ -36,12 +36,12 @@ class Patient{
   set setGrpSang(String grpSang){
     grpSang=GroupeSangin;
   }
-  set setnom(String nom){
-      nom=nom;
+  set setnomutilisateur(String nomutilisateur){
+    nomutilisateur=nomutilisateur;
   }
 
-  set setprenom(String prenom){
-    prenom=prenom;
+  set setNomcomplet(String Nomcomplet){
+    Nomcomplet=Nomcomplet;
   }
 
   set setdateNaissance(String dateNaissance){
@@ -69,12 +69,12 @@ class Patient{
   }
 
 
-  String get getnom { // Getter method
-    return nom;
+  String get getnomutilisateur { // Getter method
+    return nomutilisateur;
   }
 
-  String get getprenom{
-    return prenom;
+  String get getNomcomplet{
+    return Nomcomplet;
   }
 
   String get getDateNaissance{
@@ -126,8 +126,8 @@ class Patient{
 
   Map<String, dynamic> toJson() {
     return {
-      'nom': nom,
-      'prenom': prenom,
+      'nomutilisateur': nomutilisateur,
+      'Nomcomplet': Nomcomplet,
       'Date_Naissance': dateNaissance, // Assurez-vous que cela correspond en Python
       'email': Email,
       'num_tel': numTele, // Assurez-vous que cela correspond en Python
@@ -146,8 +146,8 @@ class Patient{
   factory Patient.fromJson(Map<String, dynamic> json) {
     Patient patient = Patient();
     patient.id=json['id'] ?? 0;
-    patient.nom = json['nom'] ?? '';
-    patient.prenom=json['prenom'] ?? '';
+    patient.nomutilisateur = json['nomutilisateur'] ?? '';
+    patient.Nomcomplet=json['Nomcomplet'] ?? '';
     patient.dateNaissance=json['Date_Naissance'] ?? '';
     patient.Email=json['email'] ?? '';
     patient.numTele=json['num_tel'] ?? '';

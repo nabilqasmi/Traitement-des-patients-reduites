@@ -2,6 +2,8 @@ import 'package:app_mobile/pages/MVC/models/Patient.dart';
 import 'package:app_mobile/pages/scresSignUp/picture.dart';
 import 'package:flutter/material.dart';
 
+import '../indxes/PageLoginSignUp/login_sign_up.dart';
+
 
 class SignUpp2 extends StatefulWidget {
   final Patient patient;
@@ -127,6 +129,12 @@ class _SignUpWizardState extends State<SignUpp2> {
                             ),
                           ),
                           controller: motpasse,
+                            validator: (value){
+                              if(value==null || value.isEmpty){
+                                return "Erreur...";
+                              }
+                              return null;
+                            }
                         ),
                       ),
                       SizedBox(height: 20,),
@@ -150,7 +158,7 @@ class _SignUpWizardState extends State<SignUpp2> {
                           ),
                           controller: motpasse2,
                             validator: (value){
-                              if(value!=motpasse.text || value==Null){
+                              if(value!=motpasse.text || value==Null || value!.isEmpty){
                                 return "Erreur...";
                               }
                               return null;
@@ -164,8 +172,16 @@ class _SignUpWizardState extends State<SignUpp2> {
                             Container(
                               padding: EdgeInsets.only(top: 100,left: 50),
                               child: TextButton(
-                                onPressed: (){},
-                                child: Text("Go Back",style: TextStyle(color: Colors.green),),
+                                onPressed: (){
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>  LSU()
+                                    ),
+                                  );
+
+                                },
+                                child: Text("Go Out",style: TextStyle(color: Colors.green),),
                               ),
                             ),
 
