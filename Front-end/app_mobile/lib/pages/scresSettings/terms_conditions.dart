@@ -43,18 +43,18 @@ class _TermsConditionState extends State<TermsCondition> {
                 child: buildNotificationOption("Securisé votre donné",valNotify1,onChangeFunction1)
             ),
           ),
-          SizedBox(height: 30,),
+          const SizedBox(height: 30,),
           Padding(
             padding: const EdgeInsets.only(left: 20),
             child: Container(
                 child: buildNotificationOption("Partager votre compte",valNotify2,onChangeFunction2)
             ),
           ),
-          SizedBox(height: 30,),
+          const SizedBox(height: 30,),
           Row(
             children: [
-              Padding(
-                padding: const EdgeInsets.only(left: 20),
+              const Padding(
+                padding: EdgeInsets.only(left: 20),
                 child: Column(
                   children: [
                     Text("j'ai compris et je suis d'accord"),
@@ -80,7 +80,7 @@ class _TermsConditionState extends State<TermsCondition> {
                               });
                             },
                           ),
-                          Text("Oui")
+                          const Text("Oui")
                         ],
                       )
                       ,
@@ -96,7 +96,7 @@ class _TermsConditionState extends State<TermsCondition> {
                               });
                             },
                           ),
-                          Text("Non")
+                          const Text("Non")
                         ],
                       )
                     ],
@@ -105,12 +105,12 @@ class _TermsConditionState extends State<TermsCondition> {
               ),
             ],
           ),
-          SizedBox(height: 200,),
+          const SizedBox(height: 200,),
           Column(
             children: [
               Container(
-                padding: EdgeInsets.only(bottom: 50),
-                child: Column(
+                padding: const EdgeInsets.only(bottom: 50),
+                child: const Column(
                   children: [
                     Text("Cette application se démarque par son excellence et sa "),
                     Text("sécurité inégalée. Avec une interface intuitive et des "),
@@ -126,17 +126,17 @@ class _TermsConditionState extends State<TermsCondition> {
                     //await UserSimplePreferences.setvalNotify1(valNotify2);
                     Navigator.push(context, MaterialPageRoute(
                         builder: (context){
-                          return ScrollPage();
+                          return const ScrollPage();
                         }
                     ));
                   },
-                  child: Text("Enregistrer",style: TextStyle(color: Colors.white),),
                   style: ButtonStyle(
-                    minimumSize: MaterialStateProperty.all(Size(150, 60)),
+                    minimumSize: MaterialStateProperty.all(const Size(150, 60)),
                     shape: MaterialStatePropertyAll(RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))),
                     backgroundColor: MaterialStateProperty.all(Colors.black12),
 
                   ),
+                  child: const Text("Enregistrer",style: TextStyle(color: Colors.white),),
                 ),
               ),
 
@@ -148,11 +148,11 @@ class _TermsConditionState extends State<TermsCondition> {
   }
   Padding buildNotificationOption(String title, bool value,Function onchangedMethod){
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: 8,horizontal: 20),
+      padding: const EdgeInsets.symmetric(vertical: 8,horizontal: 20),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text(title,style: TextStyle(
+          Text(title,style: const TextStyle(
             fontSize: 20,
             fontWeight: FontWeight.bold,
             color: Colors.black

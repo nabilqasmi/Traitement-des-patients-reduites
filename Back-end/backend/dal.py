@@ -15,7 +15,8 @@ class DAOpatients:
 
     @staticmethod
     def newPatients(patient:Patients):
-        cur.execute('INSERT INTO Patient (NomUtilisateur, Nomcomplet, DateNaissance, Email, Telephone, Adresse, Motedepasse, image, Groupesanguin, Taille, Poids, Sexe, AntecedeantMere, AntecedeantPere) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)',(patient.nomutilisateur,patient.Nomcomplet,patient.Date_Naissance,patient.email,patient.num_tel,patient.adresse,patient.mdp,patient.image,patient.GR_S,patient.taille,patient.poids,patient.sexe,patient.antecedant_mere,patient.antecedant_pere))
+        cur.execute('INSERT INTO Patient (NomUtilisateur, Nomcomplet, DateNaissance, Email, Telephone, Adresse, Motedepasse, image, Groupesanguin, Taille, Poids, Sexe, AntecedeantMere, AntecedeantPere) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)',
+                    (patient.nomutilisateur,patient.Nomcomplet,patient.Date_Naissance,patient.email,patient.num_tel,patient.adresse,patient.mdp,patient.image,patient.GR_S,patient.taille,patient.poids,patient.sexe,patient.antecedant_mere,patient.antecedant_pere))
         con.commit()
     
     @staticmethod
@@ -28,6 +29,12 @@ class DAOpatients:
     def updatePatient(NomUtilisateur:str,mdp:str):
         cur.execute("UPDATE Patients SET mdp=%s WHERE NomUtilisateur=%s", ( mdp ,NomUtilisateur,))
         con.commit()
+
+    @staticmethod
+    def patient_poid(nom: str):
+        cur.execute("SELECT Poids FROM Patient where NomUtilisateur=%s", (nom,))
+        result = cur.fetchall()
+        return result
 
     @staticmethod
     def logIn(NomUtilisateur:str,mdp:str):
@@ -70,34 +77,71 @@ class DAOpatients:
         return result
     
 class DAOmedicament:   
+
+    """
+                nom: str
+                idPatient:int
+                dose: int
+                Date: str
+                time:str
+    """
+
+    """
+        MedicamentService.ajouterMedicament(nom,dose,date,time,idPatient)
+        def ajouterMedicament(nom:str,dose:int,date:str,time:str,idPatient:int)
+    """
+
     @staticmethod
-    def newMedicament(medicament: Medicament):
-        #             str        int         str          int
-        #Medicament(nom='nom', dose=100, temps='00:00', idPatient=8)
-        cur.execute('INSERT INTO medicament ( nom , dose , temps ,Id)VALUES (%s,%s,%s,%s)',(medicament.nom,medicament.dose,medicament.temps,medicament.idPatient))
+    def newMedicament(medicament:Medicament):
+        cur.execute('INSERT INTO medicament (nom , Id ,dose, Date, time)VALUES (%s,%s,%s,%s,%s)',(medicament.nom,medicament.idPatient,medicament.dose,medicament.Date,medicament.time))
         con.commit()
     @staticmethod
     def deletemedicament(medi:Medicament):
         cur.execute("DELETE FROM medicament where nom=%s",(medi.nom,))
         con.commit()
     @staticmethod
-    def search(nom:str):
-        cur.execute("select * from medicament where nom=%s",(nom,))
+    def search(nom:str,idPatient:int):
+        cur.execute("select * from medicament where nom=%s and Id=%s",(nom,idPatient,))
         result=cur.fetchall()  
-        if result:
-            print(result)
-            Med=Medicament(result[0][1],result[0][2],result[0][3],result[0][4])
-            return Med
+        """Med=Medicament(result[0][1],result[0][2],result[0][3],result[0][4])
+            return Med"""
         return result
     
+    @staticmethod
+    def allMedicament(id:int):
+        cur.execute('select * from medicament where Id=%s',(id,))
+        result=cur.fetchall()
+        return result
 
+class DAOmedecin:
+    
+    @staticmethod
+    def newMeddin(nom:str,spe:str,idp:int,image:str):
+        cur.execute('INSERT INTO medecin (nom, specialite, Id,image) VALUES (%s, %s, %s,%s)',(nom,spe,idp,image))   
+        con.commit()
+
+    @staticmethod
+    def deletemedecin(nom:str):
+        cur.execute("DELETE FROM medecin where nom=%s", (nom,))
+        con.commit()
+
+    @staticmethod
+    def getall(id: int):
+        cur.execute("SELECT * FROM medecin WHERE id = %s", (id,))
+        result = cur.fetchall()
+        return result
 if __name__=='__main__':
     #patient=Patients("nom","prenom","2024-05-25","Email","image.png","0621870090","Adresse","123","","","","","","")
     """DAOpatients.newPatients(patient)"""
-    #medicament=Medicament("nom",100,"temps",8)
-    #DAOmedicament.newMedicament(medicament)
-    #DAOmedicament.deletemedicament(medicament)
-    #print(DAOmedicament.search("nom"))
+    #medicament1=Medicament("nom1",63,100,"2024-05-30","10:30:10")
+    #(medicament.nom,medicament.idPatient,medicament.dose,medicament.Date,medicament.time)
+    #medicament2=Medicament(0,"nom",65,100,"2024-01-04","10")
+    #DAOmedicament.newMedicament(medicament1)
+    #DAOmedicament.newMedicament(medicament2)
+    #DAOmedicament.newMedicament("nom1",100,"2024-10-04","10:00:00",65)
+    #DAOmedicament.deletemedicament(medicament1)
+    #print(DAOmedicament.search("nom2",65))
     #print(DAOpatients.logOut("Email","123"))
     #print(DAOpatients.patient_age2("2020-05-28"))
     #print(DAOpatients.lastPatient())
+    #print(DAOmedicament.allMedicament(63))

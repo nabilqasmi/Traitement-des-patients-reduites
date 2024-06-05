@@ -19,7 +19,7 @@ class DayEvent{
 
 
    DayEvent(){
-     this.EventDay;
+     EventDay;
    }
 
    Map<String, List<String>> getEvetDay(){

@@ -21,9 +21,10 @@ class _LogInState extends State<LogIn> {
 
   var Nm="";
   var Mp="";
-
+  bool ok=false;
   @override
   void dispose() {
+    super.dispose();
     nomutilisateur.dispose();
     mdp.dispose();
   }
@@ -35,19 +36,19 @@ class _LogInState extends State<LogIn> {
           child: Center(
             child: Column(
               children: [
-                SizedBox(height: 100,),
-                Icon(
+                const SizedBox(height: 100,),
+                const Icon(
                   Icons.medical_services_sharp,
                   size: 100,
                 ),
 
-                Text("Bon retour",style: TextStyle(fontSize: 30),),
-                Text("Tu nous as manqué",style: TextStyle(fontSize: 30),),
-                SizedBox(height: 25,),
+                const Text("Bon retour",style: TextStyle(fontSize: 30),),
+                const Text("Tu nous as manqué",style: TextStyle(fontSize: 30),),
+                const SizedBox(height: 25,),
                 Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 25),
+                  padding: const EdgeInsets.symmetric(horizontal: 25),
                   child: TextFormField(
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         labelText: "Votre nom d'utilisateur",
                         hintText: "nom d'utilisateur",
                         border: OutlineInputBorder(borderSide: BorderSide(width: 10)),
@@ -61,11 +62,11 @@ class _LogInState extends State<LogIn> {
                       }
                   ),
                 ),
-                SizedBox(height: 20,),
+                const SizedBox(height: 20,),
                 Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 25),
+                  padding: const EdgeInsets.symmetric(horizontal: 25),
                   child: TextFormField(
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                       labelText: 'Votre mot de passe',
                         hintText: 'mot de passe',
                         border: OutlineInputBorder(borderSide: BorderSide(width: 10)),
@@ -79,10 +80,10 @@ class _LogInState extends State<LogIn> {
               }
           ),
                 ),
-                SizedBox(height: 10,),
+                const SizedBox(height: 10,),
                 GestureDetector(
                   onTap: (){print("mot de passe oublie");},
-                  child: Padding(
+                  child: const Padding(
                     padding: EdgeInsets.symmetric(horizontal: 25),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.end,
@@ -92,50 +93,43 @@ class _LogInState extends State<LogIn> {
                     ),
                   ),
                 ),
-                SizedBox(height: 20,),
+                const SizedBox(height: 20,),
                 GestureDetector(
               onTap: ()async{
                 Nm=nomutilisateur.text;
                 Mp=mdp.text;
                 /*print(Nm);
                 print(Mp);*/
-                Patient? patient= await DataLogin(Nm, Mp) as Patient;
+                Patient? patient= await DataLogin(Nm, Mp) as Patient?;
                 if(patient==null){
-                  print("ERROR");
-                }else{
-                  PatientData().setPatient(patient);
-                  Navigator.push(context, MaterialPageRoute(
-                      builder: (context){
-                        return ScrollPage();
+                  showDialog(
+                      context: context,
+                      builder: (BuildContext context){
+                        return const AlertDialog(
+                          title: Text("Erreur d'authentification"),
+                        );
                       }
-                  ));
-                  /*print(patient.id);
-                  print(patient.nom);
-                  print(patient.prenom);
-                  print(patient.dateNaissance);
-                  print(patient.Email);
-                  print(patient.numTele);
-                  print(patient.adresse);
-                  print(patient.motpasse);
-                  print(patient.image);
-                  print(patient.GroupeSangin);
-                  print(patient.taille);
-                  print(patient.poids);
-                  print(patient.sexe);
-                  print(patient.anteHemomere);
-                  print(patient.anteHemopere);*/
+                  );
                 }
+                ok=true;
+                PatientData().setPatient(patient!);
+                Navigator.push(context, MaterialPageRoute(
+                    builder: (context){
+                      return const ScrollPage();
+                    }
+                ));
+              
                     {
                     }
               },
               child: Container(
 
-                padding: EdgeInsets.all(25),
-                margin: EdgeInsets.symmetric(horizontal: 25),
-                decoration: BoxDecoration(
+                padding: const EdgeInsets.all(25),
+                margin: const EdgeInsets.symmetric(horizontal: 25),
+                decoration: const BoxDecoration(
                   color: Colors.green,
                 ),
-                child: Center(
+                child: const Center(
                   child: Text(
                     "Connecter",
                     style: TextStyle(
@@ -147,10 +141,10 @@ class _LogInState extends State<LogIn> {
                 ),
               ),
             ),
-                SizedBox(height: 10,),
-                NoLogin(),
-                SizedBox(height: 40,),
-                Text("Veuillez vous connecter à un réseau Wi-Fi",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 15,color: Colors.red),)
+                const SizedBox(height: 10,),
+                const NoLogin(),
+                const SizedBox(height: 40,),
+                const Text("Veuillez vous connecter à un réseau Wi-Fi",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 15,color: Colors.red),)
               ],
             ),
           ),

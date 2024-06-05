@@ -25,7 +25,7 @@ import '../MVC/models/Patient.dart';
 
     final PageController _controller = PageController(initialPage: 0);
     final _formKey = GlobalKey<FormState>();
-    Patient patient=new Patient();
+    Patient patient=Patient();
 
     final  date = TextEditingController();
     final  nom=TextEditingController();
@@ -58,16 +58,16 @@ import '../MVC/models/Patient.dart';
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Container(
-                          padding: EdgeInsets.only(top: 100),
+                          padding: const EdgeInsets.only(top: 100),
                           child: Column(
                             children: [
                               Container(
-                                padding: EdgeInsets.only(left: 10,right: 10,top: 0,bottom: 15),
-                                child: Text("Veuillez vous connecter à un réseau Wi-Fi",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 15,color: Colors.red),),
+                                padding: const EdgeInsets.only(left: 10,right: 10,top: 0,bottom: 0),
+                                  child:  const Text("Veuillez vous connecter à un réseau Wi-Fi",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 15,color: Colors.red),)
                               ),
-                              Text("Bonjour et bienvenue sur",style: TextStyle(color: Colors.green,fontSize: 20),),
-                              Text("HemoConnect ! Nous sommes ravis",style: TextStyle(color: Colors.green,fontSize: 20),),
-                              Text("de vous accueillir",style: TextStyle(color: Colors.green,fontSize: 20),)
+                              const Text("Bonjour et bienvenue sur",style: TextStyle(color: Colors.green,fontSize: 20),),
+                              const Text("HemoConnect ! Nous sommes ravis",style: TextStyle(color: Colors.green,fontSize: 20),),
+                              const Text("de vous accueillir",style: TextStyle(color: Colors.green,fontSize: 20),)
                             ],
                           ),
 
@@ -77,15 +77,15 @@ import '../MVC/models/Patient.dart';
                   )
               ),
               Container(
-                padding: EdgeInsets.only(top:240),
+                padding: const EdgeInsets.only(top:240),
                 child: Form(
                     key: _formKey,
                     child: Column(
                       children: <Widget>[
                         Container(
-                          padding: EdgeInsets.only(left: 10,right: 10),
+                          padding: const EdgeInsets.only(left: 10,right: 10),
                           child: TextFormField(
-                              decoration: InputDecoration(
+                              decoration: const InputDecoration(
                                 labelText: "Votre nom d'utilisateur",
                                 hintText: 'Nom utilisateur',
                                 border: OutlineInputBorder(borderSide: BorderSide(width: 10)),
@@ -99,11 +99,11 @@ import '../MVC/models/Patient.dart';
                               }
                           ),
                         ),
-                        SizedBox(height: 20,),
+                        const SizedBox(height: 20,),
                         Container(
-                          padding: EdgeInsets.only(left: 10,right: 10),
+                          padding: const EdgeInsets.only(left: 10,right: 10),
                           child: TextFormField(
-                              decoration: InputDecoration(
+                              decoration: const InputDecoration(
                                 labelText: 'Votre nom complet',
                                 hintText: 'Nom complet',
                                 border: OutlineInputBorder(borderSide: BorderSide(width: 10)),
@@ -117,12 +117,12 @@ import '../MVC/models/Patient.dart';
                               }
                           ),
                         ),
-                        SizedBox(height: 20,),
+                        const SizedBox(height: 20,),
                         Container(
-                          padding: EdgeInsets.only(left: 10,right: 10),
+                          padding: const EdgeInsets.only(left: 10,right: 10),
                           child: TextFormField(
                             controller: date,
-                            decoration: InputDecoration(
+                            decoration: const InputDecoration(
                               labelText: 'Votre Date de Naissance',
                               hintText: 'Date de Naissance',
                               prefixIcon: Icon(Icons.calendar_today),
@@ -140,11 +140,11 @@ import '../MVC/models/Patient.dart';
                               }
                           ),
                         ),
-                        SizedBox(height: 20,),
+                        const SizedBox(height: 20,),
                         Container(
-                          padding: EdgeInsets.only(left: 10,right: 10),
+                          padding: const EdgeInsets.only(left: 10,right: 10),
                           child: TextFormField(
-                              decoration: InputDecoration(
+                              decoration: const InputDecoration(
                                 labelText: 'Votre Email',
                                 hintText: 'Email',
                                 prefixIcon: Icon(Icons.email),
@@ -159,25 +159,30 @@ import '../MVC/models/Patient.dart';
                               }
                           ),
                         ),
+                        //SizedBox(height: 40,),
+                        /*Container(
+                          //padding: EdgeInsets.only(top: 10),
+                          child: Text("Veuillez vous connecter à un réseau Wi-Fi",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 15,color: Colors.red),)
+                        ),*/
                         Container(
                           child: Row(
                             children: [
                               Container(
-                                padding: EdgeInsets.only(top: 100,left: 50),
+                                padding: const EdgeInsets.only(top: 100,left: 50),
                                 child: TextButton(
                                   onPressed: (){
                                     Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                        builder: (context) =>  LSU()
+                                        builder: (context) =>  const LSU()
                                       ),
                                     );
                                   },
-                                  child: Text("Go Out",style: TextStyle(color: Colors.green),),
+                                  child: const Text("Go Out",style: TextStyle(color: Colors.green),),
                                 ),
                               ),
                               Container(
-                                padding: EdgeInsets.only(top: 100,left: 100),
+                                padding: const EdgeInsets.only(top: 100,left: 100),
                                 child:ElevatedButton(
                                         onPressed: () async{
                                           if(_formKey.currentState!.validate()){
@@ -194,10 +199,6 @@ import '../MVC/models/Patient.dart';
                                             ema=Email.text;
                                             patient.Email=ema;
 
-                                            /*print(name);
-                                            print(pr);
-                                            print(dat);
-                                            print(ema);*/
                                             print(valeur.split(":")[2]);
                                             print("true");
                                             if(valeur.split(":")[2]==" true"){
@@ -214,7 +215,7 @@ import '../MVC/models/Patient.dart';
                                               showDialog(
                                                   context: context,
                                                   builder: (BuildContext context){
-                                                    return AlertDialog(
+                                                    return const AlertDialog(
                                                       title: Text("Votre âge est inadapté."),
                                                     );
                                                   }
@@ -222,19 +223,19 @@ import '../MVC/models/Patient.dart';
                                             }
                                           }
                                         },
-                                        child: Text("Next",style: TextStyle(color: Colors.white),),
                                           style: ButtonStyle(
-                                          minimumSize: MaterialStateProperty.all(Size(150, 60)),
+                                          minimumSize: MaterialStateProperty.all(const Size(150, 60)),
                                           shape: MaterialStatePropertyAll(RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))),
                                           backgroundColor: MaterialStateProperty.all(Colors.black12),
 
                                           ),
+                                        child: const Text("Next",style: TextStyle(color: Colors.white),),
                                       ),
                                   // Set the button text
                                 ),
                             ],
                           ),
-                        )
+                        ),
                       ],
                     )),
               ),

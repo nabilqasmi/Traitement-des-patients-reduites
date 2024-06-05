@@ -7,7 +7,7 @@ class Page1 extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           image: DecorationImage(
             image: AssetImage("assets/images/image5.jpg"),
             fit: BoxFit.cover,
@@ -18,8 +18,8 @@ class Page1 extends StatelessWidget {
           children: [
             Container(
                 height: 500,
-                padding: EdgeInsets.only(right: 0,top: 90),
-                child: Center(
+                padding: const EdgeInsets.only(right: 0,top: 90),
+                child: const Center(
                   child:
                   Text("HemoEspoir",
 

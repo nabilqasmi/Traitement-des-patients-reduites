@@ -17,7 +17,7 @@ class _SuiActState extends State<SuiAct> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Suivie d'activité"),),
+      appBar: AppBar(title: const Text("Suivie d'activité"),),
       body: Padding(
         padding: const EdgeInsets.only(top:100),
         child: Container(
@@ -26,10 +26,10 @@ class _SuiActState extends State<SuiAct> {
       ),
     );
   }
-
+  //print
   Widget content(){
     return Container(
-      child: Graphepas(),
+      child: const Graphepas(),
     );
   }
 }

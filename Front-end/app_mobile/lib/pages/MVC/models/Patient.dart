@@ -14,7 +14,7 @@ class Patient{
   String sexe='';
   String anteHemomere='';
   String anteHemopere='';
-  Patient(){}
+  Patient();
 
 
 

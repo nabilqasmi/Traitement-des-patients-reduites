@@ -1,4 +1,5 @@
 
+import 'package:app_mobile/pages/indxes/PageLoginSignUp/login_sign_up.dart';
 import 'package:app_mobile/pages/indxes/PageScroll/home.dart';
 import 'package:app_mobile/pages/indxes/PageScroll/settings.dart';
 import 'package:flutter/material.dart';
@@ -13,7 +14,7 @@ class ScrollPage extends StatefulWidget {
 }
 
 class _ScrollPageState extends State<ScrollPage> {
-  PageController _controller=PageController();
+  final PageController _controller=PageController();
   int _selectedIndex = 0;
 
 
@@ -38,7 +39,7 @@ class _ScrollPageState extends State<ScrollPage> {
       backgroundColor: Colors.white,
       body: PageView(
         controller: _controller,
-        children: [
+        children: const [
           Home(),
           NotificationMedcin(),
           Settings()

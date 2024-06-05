@@ -10,7 +10,7 @@ class Formulaire extends StatefulWidget {
   const Formulaire({super.key,required this.patient});
 
   @override
-  State<Formulaire> createState() => _FormulaireState(this.patient);
+  State<Formulaire> createState() => _FormulaireState(patient);
 }
 
 class _FormulaireState extends State<Formulaire> {
@@ -52,8 +52,8 @@ class _FormulaireState extends State<Formulaire> {
             child: Stack(
               children: [
                 Container(
-                  padding: EdgeInsets.only(top:210),
-                  decoration: BoxDecoration(
+                  padding: const EdgeInsets.only(top:210),
+                  decoration: const BoxDecoration(
                     image: DecorationImage(
                       image: AssetImage("assets/images/medcineQuestion.jpg"),
                       fit: BoxFit.fitWidth,
@@ -61,9 +61,9 @@ class _FormulaireState extends State<Formulaire> {
                   ),
                 ),
                 Container(
-                  padding: EdgeInsets.only(left: 10,right: 10,top:220),
+                  padding: const EdgeInsets.only(left: 10,right: 10,top:220),
                   child: TextFormField(
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         labelText: 'Votre Groupe Sanguin',
                         hintText: 'Groupe Sanguin',
                         border: OutlineInputBorder(borderSide: BorderSide(width: 10)),
@@ -78,9 +78,9 @@ class _FormulaireState extends State<Formulaire> {
                   ),
                 ),
                 Container(
-                  padding: EdgeInsets.only(left: 10,right: 10,top:300),
+                  padding: const EdgeInsets.only(left: 10,right: 10,top:300),
                   child: TextFormField(
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         labelText: 'Votre Taille',
                         hintText: 'Taille',
                         border: OutlineInputBorder(borderSide: BorderSide(width: 10)),
@@ -95,9 +95,9 @@ class _FormulaireState extends State<Formulaire> {
                   ),
                 ),
                 Container(
-                  padding: EdgeInsets.only(left: 10,right: 10,top:380),
+                  padding: const EdgeInsets.only(left: 10,right: 10,top:380),
                   child: TextFormField(
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         labelText: 'Votre Poids',
                         hintText: 'Poids',
                         border: OutlineInputBorder(borderSide: BorderSide(width: 10)),
@@ -112,9 +112,9 @@ class _FormulaireState extends State<Formulaire> {
                   ),
                 ),
                 Container(
-                  padding: EdgeInsets.only(top: 460, left: 100),
+                  padding: const EdgeInsets.only(top: 460, left: 100),
                   child:
-                  Row(
+                  const Row(
                     children: [
                       Icon(Icons.transgender), // Ajoutez l'icône ici
                       SizedBox(width: 10), // Espacement entre l'icône et le texte
@@ -123,7 +123,7 @@ class _FormulaireState extends State<Formulaire> {
                   ),
                 ),
                 Container(
-                  padding: EdgeInsets.only(top: 480, left: 120),
+                  padding: const EdgeInsets.only(top: 480, left: 120),
                   child: Row(
                     children: [
                       Row(
@@ -140,7 +140,7 @@ class _FormulaireState extends State<Formulaire> {
                               });
                             },
                           ),
-                          Text("Masculin ")
+                          const Text("Masculin ")
                         ],
                       )
                       ,
@@ -157,7 +157,7 @@ class _FormulaireState extends State<Formulaire> {
                               });
                             },
                           ),
-                          Text("Féminin")
+                          const Text("Féminin")
                         ],
                       )
                     ],
@@ -166,9 +166,9 @@ class _FormulaireState extends State<Formulaire> {
                     Column(
                        children: [
                          Container(
-                           padding: EdgeInsets.only(top: 530,left: 70),
+                           padding: const EdgeInsets.only(top: 530,left: 70),
                            child:
-                           Row(
+                           const Row(
                              children: [
                                Icon(Icons.family_restroom), // Ajoutez l'icône ici
                                SizedBox(width: 10), // Espacement entre l'icône et le texte
@@ -177,7 +177,7 @@ class _FormulaireState extends State<Formulaire> {
                            ),
                          ),
                          Container(
-                           padding: EdgeInsets.only(left: 130),
+                           padding: const EdgeInsets.only(left: 130),
                            child: Row(
                              children: [
                                Row(
@@ -197,7 +197,7 @@ class _FormulaireState extends State<Formulaire> {
                                        },
                                      ),
                                    ),
-                                   Text("Oui")
+                                   const Text("Oui")
                                  ],
                                )
                                ,
@@ -214,7 +214,7 @@ class _FormulaireState extends State<Formulaire> {
                                        });
                                      },
                                    ),
-                                   Text("Non")
+                                   const Text("Non")
                                  ],
                                )
                              ],
@@ -225,9 +225,9 @@ class _FormulaireState extends State<Formulaire> {
                     Column(
                       children: [
                         Container(
-                          padding: EdgeInsets.only(top: 600,left: 70),
+                          padding: const EdgeInsets.only(top: 600,left: 70),
                           child:
-                          Row(
+                          const Row(
                             children: [
                               Icon(Icons.family_restroom), // Ajoutez l'icône ici
                               SizedBox(width: 10), // Espacement entre l'icône et le texte
@@ -236,7 +236,7 @@ class _FormulaireState extends State<Formulaire> {
                           ),
                         ),
                         Container(
-                          padding: EdgeInsets.only(left: 130),
+                          padding: const EdgeInsets.only(left: 130),
                           child: Row(
                             children: [
                               Row(
@@ -256,7 +256,7 @@ class _FormulaireState extends State<Formulaire> {
                                       },
                                     ),
                                   ),
-                                  Text("Oui")
+                                  const Text("Oui")
                                 ],
                               )
                               ,
@@ -273,7 +273,7 @@ class _FormulaireState extends State<Formulaire> {
                                       });
                                     },
                                   ),
-                                  Text("Non")
+                                  const Text("Non")
                                 ],
                               )
                             ],
@@ -285,26 +285,24 @@ class _FormulaireState extends State<Formulaire> {
                   child: Row(
                     children: [
                       Container(
-                        padding: EdgeInsets.only(top: 660,left: 50),
+                        padding: const EdgeInsets.only(top: 660,left: 50),
                         child: TextButton(
                           onPressed: (){
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) =>  LSU()
+                                  builder: (context) =>  const LSU()
                               ),
                             );
                           },
-                          child: Text("Go Out",style: TextStyle(color: Colors.green),),
+                          child: const Text("Go Out",style: TextStyle(color: Colors.green),),
                         ),
                       ),
 
                       Container(
-                        padding: EdgeInsets.only(top: 660,left: 100),
+                        padding: const EdgeInsets.only(top: 660,left: 100),
                         child:ElevatedButton(
-                          onPressed: () {
-                            widget.patient.image="image.png";
-
+                          onPressed: () async{
                             gS=grpSang.text;
                             tE=taille.text;
                             pS=Poids.text;
@@ -315,8 +313,8 @@ class _FormulaireState extends State<Formulaire> {
                             widget.patient.anteHemomere=aOM;
                             widget.patient.anteHemopere=aOP;
 
-                            /*print("Nom: "+widget.patient.nom);
-                            print("Prenom: "+widget.patient.prenom);
+                            /*print("Nom: "+widget.patient.nomutilisateur);
+                            print("Prenom: "+widget.patient.Nomcomplet);
                             print("Date: "+widget.patient.dateNaissance);
                             print("Email: "+widget.patient.Email);
                             print("Numero de telephone: "+widget.patient.numTele);
@@ -330,22 +328,39 @@ class _FormulaireState extends State<Formulaire> {
                             print("Antecedent hemophilie Mere: "+widget.patient.anteHemomere);
                             widget.patient.anteHemopere=aOP;
                             print("Antecedent hemophilie Pere: "+widget.patient.anteHemopere);*/
-                            Navigator.push(
+
+
+                            String valeur=await DataCheckPoids(pS);
+                            print(valeur.split(":")[2]);
+                            if(valeur.split(":")[2]==" true"){
+                              Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) =>  IaResponse(),
+                                builder: (context) =>  const IaResponse(),
                               ),
                             );
                             DataPatient(widget.patient);
-                          },
+                            }
+                            else{
+                              showDialog(
+                                  context: context,
+                                  builder: (BuildContext context){
+                                    return const AlertDialog(
+                                      title: Text("Votre poids est inadapté."),
+                                    );
+                                  }
+                              );
+                            }
 
-                          child: Text("Next",style: TextStyle(color: Colors.white),),
+                          },
                           style: ButtonStyle(
-                            minimumSize: MaterialStateProperty.all(Size(150, 60)),
+                            minimumSize: MaterialStateProperty.all(const Size(150, 60)),
                             shape: MaterialStatePropertyAll(RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))),
                             backgroundColor: MaterialStateProperty.all(Colors.black12),
 
                           ),
+
+                          child: const Text("Next",style: TextStyle(color: Colors.white),),
                         ),
                         // Set the button text
                       ),

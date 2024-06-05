@@ -1,7 +1,11 @@
-import 'package:app_mobile/pages/indxes/PageScroll/Notifications/rendezvous.dart';
 import 'package:flutter/material.dart';
 
-import 'medpatient.dart';
+import '../../../MVC/Controller/Controller.dart';
+import '../../../MVC/models/Medecin.dart';
+import '../../../MVC/models/Medicament.dart';
+import '../../../MVC/models/PatientData.dart';
+import 'medRv.dart';
+import 'medipatient.dart';
 
 class NotificationMedcin extends StatefulWidget {
   const NotificationMedcin ({super.key});
@@ -11,9 +15,15 @@ class NotificationMedcin extends StatefulWidget {
 }
 
 class _NotificationMedcinState extends State<NotificationMedcin> {
-  int _selectedIndex = 0;
-  PageController _controller=PageController();
-
+  /*final patient = PatientData().patient;
+  late Future<List<Medicament?>> med;
+  late Future<List<Medecin?>> meds;
+  @override
+  void initState() {
+    super.initState();
+    //med = allMedicaments(patient.id);
+    meds=allMedecin(patient.id);
+  }*/
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +31,7 @@ class _NotificationMedcinState extends State<NotificationMedcin> {
       length: 2,
       child: Scaffold(
         appBar: AppBar(
-          bottom: TabBar(
+          bottom: const TabBar(
             tabs: [
               Tab(
                 child: ImageIcon(
@@ -38,16 +48,15 @@ class _NotificationMedcinState extends State<NotificationMedcin> {
             ],
           ),
         ),
-        /*body: TabBarView(
+        body: TabBarView(
           children: [
-
+            // Premier onglet
+            medRv(),
+            // Deuxième onglet
+            MedPatient(),
           ],
-        ),*/
+        ),
       ),
     );
   }
 }
-
-
-
-

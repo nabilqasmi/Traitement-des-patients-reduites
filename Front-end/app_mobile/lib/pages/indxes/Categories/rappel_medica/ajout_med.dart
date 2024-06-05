@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:app_mobile/pages/indxes/Categories/rappel_medica/valider.dart';
 
@@ -11,13 +13,15 @@ class AjoutMed extends StatefulWidget {
 class _AjoutMedState extends State<AjoutMed> {
   final nomMed = TextEditingController();
   final dose = TextEditingController();
-  final temps = TextEditingController();
+  final date = TextEditingController();
+  final time=TextEditingController();
 
   @override
   void dispose() {
     nomMed.dispose();
     dose.dispose();
-    temps.dispose();
+    date.dispose();
+    time.dispose();
     super.dispose();
   }
 
@@ -35,8 +39,8 @@ class _AjoutMedState extends State<AjoutMed> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Container(
-                      padding: EdgeInsets.only(top: 150),
-                      child: Column(
+                      padding: const EdgeInsets.only(top: 150),
+                      child: const Column(
                         children: [
                           Text(
                             "Les informations ",
@@ -58,16 +62,16 @@ class _AjoutMedState extends State<AjoutMed> {
               ),
             ),
             Container(
-              padding: EdgeInsets.only(top: 240),
+              padding: const EdgeInsets.only(top: 240),
               child: Form(
                 key: _formKey,
                 child: Column(
                   children: <Widget>[
-                    SizedBox(height: 40),
+                    const SizedBox(height: 40),
                     Container(
-                      padding: EdgeInsets.only(left: 10, right: 10),
+                      padding: const EdgeInsets.only(left: 10, right: 10),
                       child: TextFormField(
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                           labelText: 'Nom de medicament',
                           hintText: 'medicament',
                           prefixIcon: Icon(Icons.medical_information),
@@ -76,11 +80,11 @@ class _AjoutMedState extends State<AjoutMed> {
                         controller: nomMed,
                       ),
                     ),
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
                     Container(
-                      padding: EdgeInsets.only(left: 10, right: 10),
+                      padding: const EdgeInsets.only(left: 10, right: 10),
                       child: TextFormField(
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                           labelText: 'La dose à prendre',
                           hintText: 'La dose',
                           prefixIcon: Icon(Icons.medication_liquid),
@@ -89,24 +93,38 @@ class _AjoutMedState extends State<AjoutMed> {
                         controller: dose,
                       ),
                     ),
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
                     Container(
-                      padding: EdgeInsets.only(left: 10, right: 10),
+                      padding: const EdgeInsets.only(left: 10, right: 10),
                       child: TextFormField(
-                        decoration: InputDecoration(
-                          labelText: 'Temps à prendre',
-                          hintText: 'Temps',
-                          prefixIcon: Icon(Icons.calendar_today),
+                        decoration: const InputDecoration(
+                          labelText: 'date à prendre',
+                          hintText: 'yyyy-mm-jj',
+                          prefixIcon: Icon(Icons.date_range),
                           border: OutlineInputBorder(borderSide: BorderSide(width: 10)),
                         ),
-                        controller: temps,
+                        controller:date,
                       ),
                     ),
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
+                    Container(
+                      padding: const EdgeInsets.only(left: 10, right: 10),
+                      child: TextFormField(
+                        decoration: const InputDecoration(
+                          labelText: 'time à prendre',
+                          hintText: 'HH:MM:SS',
+                          prefixIcon: Icon(Icons.timer_outlined),
+                          border: OutlineInputBorder(borderSide: BorderSide(width: 10)),
+                        ),
+                        controller:time,
+                      ),
+                    ),
+                    const SizedBox(height: 20),
                     Validerr(
                       nomController: nomMed,
                       doseController: dose,
-                      tempsController: temps,
+                      date: date,
+                      time: time,
                     ),
                   ],
                 ),

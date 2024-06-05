@@ -33,8 +33,8 @@ class _SignutState extends State<Signut> {
               child: Column(
                 children: [
                   Container(
-                    padding: EdgeInsets.only(top:280),
-                    decoration: BoxDecoration(
+                    padding: const EdgeInsets.only(top:280),
+                    decoration: const BoxDecoration(
                       image: DecorationImage(
                         image: AssetImage("assets/images/bye.jpg"),
                         fit: BoxFit.fill,
@@ -42,12 +42,12 @@ class _SignutState extends State<Signut> {
                     ),
                   ),
 
-                  Text("À bientôt, prenez soin!",style: TextStyle(fontSize: 30),),
-                  SizedBox(height: 25,),
+                  const Text("À bientôt, prenez soin!",style: TextStyle(fontSize: 30),),
+                  const SizedBox(height: 25,),
                   Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 25),
+                    padding: const EdgeInsets.symmetric(horizontal: 25),
                     child: TextFormField(
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                           labelText: "Votre Gmail",
                           hintText: "Gamil",
                           border: OutlineInputBorder(borderSide: BorderSide(width: 10)),
@@ -61,11 +61,11 @@ class _SignutState extends State<Signut> {
                         }
                     ),
                   ),
-                  SizedBox(height: 20,),
+                  const SizedBox(height: 20,),
                   Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 25),
+                    padding: const EdgeInsets.symmetric(horizontal: 25),
                     child: TextFormField(
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         labelText: 'Votre mot de passe',
                         hintText: 'Mot de passe',
                         border: OutlineInputBorder(borderSide: BorderSide(width: 1)),
@@ -80,10 +80,10 @@ class _SignutState extends State<Signut> {
                     ),
 
                   ),
-                  SizedBox(height: 10,),
+                  const SizedBox(height: 10,),
                   GestureDetector(
                     onTap: (){print("mot de passe oublie");},
-                    child: Padding(
+                    child: const Padding(
                       padding: EdgeInsets.symmetric(horizontal: 25),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.end,
@@ -93,15 +93,15 @@ class _SignutState extends State<Signut> {
                       ),
                     ),
                   ),
-                  SizedBox(height: 20,),
-                  SizedBox(height: 10,),
+                  const SizedBox(height: 20,),
+                  const SizedBox(height: 10,),
                   GestureDetector(
                     onTap: ()async{
                           Patient? patient= await DataLogOut(Gmail.text,mdp.text);
                           if(patient!=null){
                             Navigator.push(context, MaterialPageRoute(
                                 builder: (context){
-                                  return LSU();
+                                  return const LSU();
                                 }
                             ));
                           }
@@ -109,7 +109,7 @@ class _SignutState extends State<Signut> {
                             showDialog(
                                 context: context,
                                 builder: (BuildContext context){
-                                  return AlertDialog(
+                                  return const AlertDialog(
                                     title: Text("Erreur"),
                                   );
                                 }
@@ -118,12 +118,12 @@ class _SignutState extends State<Signut> {
 
                     },
                   child: Container(
-                    padding: EdgeInsets.all(25),
-                    margin: EdgeInsets.symmetric(horizontal: 25),
-                    decoration: BoxDecoration(
+                    padding: const EdgeInsets.all(25),
+                    margin: const EdgeInsets.symmetric(horizontal: 25),
+                    decoration: const BoxDecoration(
                       color: Colors.green,
                     ),
-                    child: Center(
+                    child: const Center(
                       child: Text(
                         "Déconnecter",
                         style: TextStyle(

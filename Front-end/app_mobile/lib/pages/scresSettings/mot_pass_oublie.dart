@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'email.dart';
@@ -14,18 +13,18 @@ class MotPassOublie extends StatelessWidget {
             child: Center(
               child: Column(
                 children: [
-                  SizedBox(height: 200,),
-                  Icon(
+                  const SizedBox(height: 200,),
+                  const Icon(
                     Icons.password,
                     size: 100,
                   ),
 
-                  Text("Changer mot passe",style: TextStyle(fontSize: 30),),
-                  SizedBox(height: 25,),
+                  const Text("Changer mot passe",style: TextStyle(fontSize: 30),),
+                  const SizedBox(height: 25,),
                   Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 25),
+                    padding: const EdgeInsets.symmetric(horizontal: 25),
                     child: TextFormField(
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                           labelText: "Votre Gmail",
                           hintText: "Gamil",
                           border: OutlineInputBorder(borderSide: BorderSide(width: 10)),
@@ -38,11 +37,11 @@ class MotPassOublie extends StatelessWidget {
                         }
                     ),
                   ),
-                  SizedBox(height: 20,),
-                  SizedBox(height: 10,),
-                  SizedBox(height: 20,),
-                  SizedBox(height: 10,),
-                  Email(),
+                  const SizedBox(height: 20,),
+                  const SizedBox(height: 10,),
+                  const SizedBox(height: 20,),
+                  const SizedBox(height: 10,),
+                  const Email(),
                 ],
               ),
             ),

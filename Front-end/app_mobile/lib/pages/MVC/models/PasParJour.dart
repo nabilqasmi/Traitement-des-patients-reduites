@@ -1,6 +1,6 @@
 class PasParJour{
   //Patient _patient = Patient();
-  Map<String,int> _dict=Map<String,int>();
+  Map<String,int> _dict=<String,int>{};
 
   PasParJour._internal();
 

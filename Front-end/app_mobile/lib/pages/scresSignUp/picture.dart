@@ -1,102 +1,126 @@
-import 'dart:typed_data';
+import 'dart:io';
 import 'package:app_mobile/pages/MVC/models/Patient.dart';
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import '../indxes/PageLoginSignUp/login_sign_up.dart';
 import 'formulaire.dart';
 
-class  Picture1 extends StatefulWidget {
+class Picture1 extends StatefulWidget {
   final Patient patient;
-  const Picture1({super.key,required this.patient});
+  const Picture1({super.key, required this.patient});
 
   @override
-  State<Picture1> createState() => _State(this.patient);
+  State<Picture1> createState() => _State(patient);
 }
 
 class _State extends State<Picture1> {
-Uint8List? _image;
-  /*void SelectedImage() async{
-    Uint8List img=await pickImage(ImageSource.gallery);
-    setState(() {
-      _image=img;
-    });
-  }*/
-  /*Uint8List? _image;
-  File? selectedIMage;*/
+  File? _imageFile;
+
+  void pickImage() async {
+    FilePickerResult? result = await FilePicker.platform.pickFiles(
+      type: FileType.image,
+    );
+
+    if (result != null) {
+      setState(() {
+
+        _imageFile = File(result.files.single.path!);
+      });
+    } else {
+      print('No file selected');
+    }
+  }
 
   _State(Patient patient);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text('Photo de Profil'),
+      ),
       body: Center(
         child: Column(
-          mainAxisAlignment:MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Stack(
               children: [
-                _image != null ?
-                 CircleAvatar(
-                  radius: 64,
-                  backgroundImage: MemoryImage(_image!),
-                ):
-                const CircleAvatar(
-                  radius: 64,
-                  backgroundImage: AssetImage("assets/images/photo.png"),
-                ),
-                Positioned(
-                    child: IconButton(onPressed: /*SelectedImage*/(){},icon: Icon(Icons.add_a_photo),),
-                  bottom: -10,
-                  left: 80,
-                ),
+                _imageFile != null
+                    ? Container(
+                  alignment: Alignment.center,
+                      child: CircleAvatar(
+                                        radius: 64,
+                                        backgroundImage: FileImage(_imageFile!),
+                                      ),
+                    ) //
+                    : Text(''),
+                Container(
+                  child: TextButton(
+                    onPressed: pickImage,
+                    child: _imageFile == null
+                        ? Icon(
+                      Icons.add_a_photo,
+                      size: 70,
+                      color: Colors.green,
+                    )
+                        : Container(), // Container vide si l'image est chargée
+                  ),
+                  ),
               ],
-
             ),
             Container(
               child: Row(
                 children: [
-
                   Container(
-                    padding: EdgeInsets.only(top: 400,left: 50),
+                    padding: const EdgeInsets.only(top: 300, left: 50),
                     child: TextButton(
-                      onPressed: (){
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) =>  LSU()
-                          ),
-                        );
-                      },
-                      child: Text("Go Out",style: TextStyle(color: Colors.green),),
-                    ),
-                  ),
-
-                  Container(
-                    padding: EdgeInsets.only(top: 400,left: 100),
-                    child:ElevatedButton(
                       onPressed: () {
-                        widget.patient.image="image.png";
-                            /*print("Nom: "+widget.patient.nom);
-                            print("Prenom: "+widget.patient.prenom);
-                            print("Date: "+widget.patient.dateNaissance);
-                            print("Email: "+widget.patient.Email);
-                            print("Numero de telephone: "+widget.patient.numTele);
-                            print("Adresse: "+widget.patient.adresse);
-                            print("mot de passe: "+widget.patient.motpasse);*/
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) =>  Formulaire(patient: widget.patient,),
-                          ),
+                              builder: (context) => const LSU()),
                         );
                       },
-                      child: Text("Next",style: TextStyle(color: Colors.white),),
-                      style: ButtonStyle(
-                        minimumSize: MaterialStateProperty.all(Size(150, 60)),
-                        shape: MaterialStatePropertyAll(RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))),
-                        backgroundColor: MaterialStateProperty.all(Colors.black12),
-
+                      child: const Text(
+                        "Go Out",
+                        style: TextStyle(color: Colors.green),
                       ),
                     ),
-                    // Set the button text
+                  ),
+                  Container(
+                    padding: const EdgeInsets.only(top: 300, left: 100),
+                    child: ElevatedButton(
+                      onPressed: () {
+                        if(_imageFile==null){
+                          widget.patient.image="assets/images/in.jpg";
+                        }else{
+                          widget.patient.image = '${_imageFile!.path}';
+                          print(widget.patient.image);
+                        }
+
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) =>
+                                Formulaire(patient: widget.patient),
+                          ),
+                        );
+                      },
+                      style: ButtonStyle(
+                        minimumSize:
+                        MaterialStateProperty.all(const Size(150, 60)),
+                        shape: MaterialStatePropertyAll(
+                          RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10)),
+                        ),
+                        backgroundColor:
+                        MaterialStateProperty.all(Colors.black12),
+                      ),
+                      child: const Text(
+                        "Next",
+                        style: TextStyle(color: Colors.white),
+                      ),
+                    ),
                   ),
                 ],
               ),
@@ -106,13 +130,4 @@ Uint8List? _image;
       ),
     );
   }
-  /*Future _pickImageFromGallery()  async{
-    final returnImage=
-        await ImagePicker().pickImage(source: ImageSource.gallery);
-        if(returnImage==null)return;
-        setState(() {
-          selectedIMage = File(returnImage.path);
-          _image=File(returnImage.path).readAsBytesSync();
-        });
-  }*/
 }

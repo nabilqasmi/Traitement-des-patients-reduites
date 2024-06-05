@@ -15,7 +15,7 @@ class Test extends StatefulWidget {
 
 class _TestState extends State<Test> {
 
-  PageController _controller=PageController();
+  final PageController _controller=PageController();
 
   @override
   Widget build(BuildContext context) {
@@ -31,49 +31,49 @@ class _TestState extends State<Test> {
             ],
           ),
           Container(
-              alignment: Alignment(0,-0.8),
+              alignment: const Alignment(0,-0.8),
               child: SmoothPageIndicator(
                   controller: _controller,
                   count: 3,
-                  effect: WormEffect(
+                  effect: const WormEffect(
                     dotWidth: (50)
                   ),
               ),
           ),
           Container(
-            alignment: Alignment(0,0.8),
+            alignment: const Alignment(0,0.8),
             child: TextButton( // Use ElevatedButton for a raised button effect
               onPressed: () {
                 Navigator.push(context, MaterialPageRoute(
                   builder: (context){
-                    return LSU();
+                    return const LSU();
                   }
                 ));
                 //_controller.jumpTo(3);
               },
-                child: Text("Skip",style: TextStyle(color: Colors.green),) // Set the button text
+                child: const Text("Skip",style: TextStyle(color: Colors.green),) // Set the button text
             ),
           ),
           Container(
-            alignment: Alignment(0,0.66),
+            alignment: const Alignment(0,0.66),
               child: ElevatedButton( // Use ElevatedButton for a raised button effect
                 onPressed: () {
                   if(_controller.page ==2){
                     Navigator.push(context, MaterialPageRoute(
                         builder: (context){
-                          return LSU();
+                          return const LSU();
                         }
                     ));
                   }else{
-                    _controller.nextPage(duration: Duration(microseconds: 500), curve: Curves.easeIn);
+                    _controller.nextPage(duration: const Duration(microseconds: 500), curve: Curves.easeIn);
                   }
 
                 },
-                child: Text("Next",style: TextStyle(color: Colors.white),),
                 style: ButtonStyle(
-                    minimumSize: MaterialStateProperty.all(Size(300, 40)),
+                    minimumSize: MaterialStateProperty.all(const Size(300, 40)),
                     backgroundColor: MaterialStateProperty.all(Colors.green)
                 ),
+                child: const Text("Next",style: TextStyle(color: Colors.white),),
                 // Set the button text
               ),
           )

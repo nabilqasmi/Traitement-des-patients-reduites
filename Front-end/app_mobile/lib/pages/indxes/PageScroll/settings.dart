@@ -1,5 +1,9 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 
+import '../../MVC/models/Patient.dart';
+import '../../MVC/models/PatientData.dart';
 import '../../scresSettings/mot_pass_oublie.dart';
 import '../../scresSettings/sign_out.dart';
 import '../../scresSettings/terms_conditions.dart';
@@ -13,7 +17,8 @@ class Settings extends StatefulWidget {
 
 
 class _SettingsState extends State<Settings> {
-  @override
+
+  Patient patient = PatientData().patient;
 
   var settingsList=[
     "Change Password",
@@ -26,27 +31,37 @@ class _SettingsState extends State<Settings> {
     Icons.note,
     Icons.logout
   ];
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
           body: Padding(
-            padding: EdgeInsets.only(top: 50,left: 10),
+            padding: const EdgeInsets.only(top: 50,left: 10),
             child: Column(
               children: [
                 ListTile(
-                  leading: CircleAvatar(child: Image.asset("assets/images/photo.png"),),
-                  title: Text("Username"),
-                  subtitle: Text("user_email@gmailcom"),
+                  leading: CircleAvatar(
+            radius: 25,
+              backgroundImage: FileImage(File(patient.image)),
+            ),
+                  title:  Text('${patient.nomutilisateur}'),
+                  subtitle:  Text('${patient.Email}'),
 
                 ),
-                Divider(),
-                SizedBox(height: 20,),
+                const Divider(),
+                const SizedBox(height: 20,),
                 ListView(
                   shrinkWrap: true,
                   children:
                       [
                         Row(
                           children: [
-                            SizedBox(width: 20,),
+                            const SizedBox(width: 20,),
                             Icon(settingsListIcon[0]),
                             Container(
 
@@ -54,7 +69,7 @@ class _SettingsState extends State<Settings> {
                                 onPressed: (){
                                   Navigator.push(context, MaterialPageRoute(
                                       builder: (context){
-                                        return MotPassOublie();
+                                        return const MotPassOublie();
                                       }
                                   ));
                                 },
@@ -65,7 +80,7 @@ class _SettingsState extends State<Settings> {
 
                         Row(
                           children: [
-                            SizedBox(width: 20,),
+                            const SizedBox(width: 20,),
                             Icon(settingsListIcon[1]),
                             Container(
 
@@ -73,7 +88,7 @@ class _SettingsState extends State<Settings> {
                                 onPressed: (){
                                   Navigator.push(context, MaterialPageRoute(
                                       builder: (context){
-                                        return TermsCondition();
+                                        return const TermsCondition();
                                       }
                                   ));
                                 },
@@ -83,7 +98,7 @@ class _SettingsState extends State<Settings> {
                         ),
                         Row(
                           children: [
-                            SizedBox(width: 20,),
+                            const SizedBox(width: 20,),
                             Icon(settingsListIcon[2]),
                             Container(
 
@@ -91,7 +106,7 @@ class _SettingsState extends State<Settings> {
                                 onPressed: (){
                                   Navigator.push(context, MaterialPageRoute(
                                       builder: (context){
-                                        return Signut();
+                                        return const Signut();
                                       }
                                   ));
                                 },

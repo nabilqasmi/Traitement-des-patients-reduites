@@ -12,14 +12,14 @@ class NoLogin extends StatelessWidget {
       onTap: (){
         Navigator.push(context, MaterialPageRoute(
             builder: (context){
-              return SignUpp();
+              return const SignUpp();
             }
         ));
       },
       child: Container(
         child: Container(
-          padding: EdgeInsets.only(left : 25),
-          child: Row(
+          padding: const EdgeInsets.only(left : 25),
+          child: const Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Text(

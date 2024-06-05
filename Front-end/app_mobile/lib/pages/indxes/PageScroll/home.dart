@@ -1,13 +1,16 @@
+import 'dart:io';
+
 import 'package:app_mobile/pages/MVC/models/PasParJour.dart';
 import 'package:app_mobile/pages/MVC/models/PatientData.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import '../../MVC/Controller/Controller.dart';
+import '../../MVC/models/Medicament.dart';
 import '../../MVC/models/Patient.dart';
-import '../Categories/Seance_Reduction/seance_red.dart';
+import '../Categories/SeaRed/video.dart';
 import '../Categories/SuivActivite/TEST/graphePas.dart';
-import '../Categories/SuivActivite/suiv_act.dart';
 import '../Categories/rappel_medica/rapp_med.dart';
-import 'Notifications/rendezvous.dart';
+import '../Categories/RendezAvecDoctor/rendezvous.dart';
 
 
 class Home extends StatefulWidget {
@@ -20,7 +23,8 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   ScrollController scrollController=ScrollController();
 
-  List<Map<String, dynamic>> medCat=[];
+
+  Patient patient = PatientData().patient;
 
   @override
   void initState() {
@@ -70,21 +74,21 @@ class _HomeState extends State<Home> {
                           children:  <Widget>[
                             Text(
                                 'Bonjour ${patient.nomutilisateur}',
-                                style: TextStyle(
+                                style: const TextStyle(
                                   fontSize: 30,
                                   fontWeight: FontWeight.bold
                                 ),
                               ),
-                            SizedBox(
+                             SizedBox(
                               child: CircleAvatar(
-                                radius: 30,
-                                backgroundImage: AssetImage('assets/images/photo.png'),
+                                radius: 25,
+                                backgroundImage: FileImage(File(patient.image)),
                               ),
                             )
                           ],
                         ),
                       ),
-                      Container(
+                      SizedBox(
                         height: 140,
                         child: ListView(
                           controller: scrollController,
@@ -92,29 +96,29 @@ class _HomeState extends State<Home> {
                           children: [
                             TextButton(
                                 onPressed: (){},
-                                child: Text("Affrontez chaque \npas avec confiance")
+                                child: const Text("Affrontez chaque \npas avec confiance")
                             ),
                             TextButton(
                                 onPressed: (){},
-                                child: Text("Prenez soin \nde vous")
+                                child: const Text("Prenez soin \nde vous")
                             ),
                             TextButton(
                                 onPressed: (){},
-                                child: Text("Nourrissez votre\n équilibre")
+                                child: const Text("Nourrissez votre\n équilibre")
                             ),
                             TextButton(
                                 onPressed: (){},
-                                child: Text("Continuez à\n gagner")
+                                child: const Text("Continuez à\n gagner")
                             ),TextButton(
                                 onPressed: (){},
-                                child: Text("tu es tres\n fort")
+                                child: const Text("tu es tres\n fort")
                             ),
                           ],
                         ),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.all(20.0),
-                        child: const Text(
+                      const Padding(
+                        padding: EdgeInsets.all(20.0),
+                        child: Text(
                           " Categories",
                           style: TextStyle(
                               fontSize: 25,
@@ -130,10 +134,15 @@ class _HomeState extends State<Home> {
                                 children: [
                                   Container(
                                       child:TextButton(
-                                        onPressed: (){
+                                        onPressed: ()async{
+                                          List<Medicament?> med;
+                                          med= await allMedicaments(patient.id);
+                                          /*for(var i in med){
+
+                                          }*/
                                           Navigator.push(context, MaterialPageRoute(
                                               builder: (context){
-                                                return RappMed();
+                                                return  RappMed(allMed: med);
                                               }
                                           ));
                                         },
@@ -144,12 +153,12 @@ class _HomeState extends State<Home> {
                                           ),
                                       ),
                                   ),
-                                  Text("Rappel de médicament",style: TextStyle(color: Colors.green,fontWeight: FontWeight.bold),)
+                                  const Text("Rappel de médicament",style: TextStyle(color: Colors.green,fontWeight: FontWeight.bold),)
                                 ],
                               ),
                               //Text("Rappel de medicament"),
                               Padding(
-                                padding: EdgeInsets.only(left: 10),
+                                padding: const EdgeInsets.only(left: 10),
                                 child: Column(
                                   children: [
                                     Container(
@@ -159,7 +168,7 @@ class _HomeState extends State<Home> {
                                             PasParJour().setPasJour(nombreDePas!);
                                             Navigator.push(context, MaterialPageRoute(
                                                 builder: (context){
-                                                  return Graphepas();
+                                                  return const Graphepas();
                                                 }
                                             ));
                                           },
@@ -169,13 +178,13 @@ class _HomeState extends State<Home> {
                                               width: 170,
                                           ),
                                         )),
-                                    Text("Pas quotidienne",style: TextStyle(color: Colors.green,fontWeight: FontWeight.bold),)
+                                    const Text("Pas quotidienne",style: TextStyle(color: Colors.green,fontWeight: FontWeight.bold),)
                                   ],
                                 ),
                               ),
                             ],
                           ),
-                          SizedBox(height: 30,),
+                          const SizedBox(height: 30,),
                           Row(
                             children: [
                               Column(
@@ -185,7 +194,7 @@ class _HomeState extends State<Home> {
                                       onPressed: (){
                                             Navigator.push(context, MaterialPageRoute(
                                                 builder: (context){
-                                                    return SeanceRed();
+                                                    return Video();
                                                 }
                                               ));
                                             },
@@ -196,18 +205,18 @@ class _HomeState extends State<Home> {
                                       ),
                                     ),
                                   ),
-                                  Text("Seance de réduction",style: TextStyle(color: Colors.green,fontWeight: FontWeight.bold),)
+                                  const Text("Seance de réduction",style: TextStyle(color: Colors.green,fontWeight: FontWeight.bold),)
                                 ],
                               ),
                               Padding(
-                                padding: EdgeInsets.only(left: 10),
+                                padding: const EdgeInsets.only(left: 10),
                                 child: Column(
                                   children: [
                                     Container(
                                         child: TextButton(
                                           onPressed: (){ Navigator.push(context, MaterialPageRoute(
                                               builder: (context){
-                                                return RendezVous();
+                                                return  RendezVous();
                                               }
                                           ));
                                           },
@@ -217,12 +226,12 @@ class _HomeState extends State<Home> {
                                             width: 170,
                                           ),
                                         )),
-                                    Text("Rendez-vous avec Medecin",style: TextStyle(color: Colors.green,fontWeight: FontWeight.bold),)
+                                    const Text("Rendez-vous avec Medecin",style: TextStyle(color: Colors.green,fontWeight: FontWeight.bold),)
                                   ],
                                 ),
                               ),
                             ],
-                          )
+                          ),
                         ],
                       )
                     ],

@@ -10,7 +10,7 @@ class SignUpp2 extends StatefulWidget {
 
   const  SignUpp2({Key? key, required this.patient}) : super(key: key);
   @override
-  State<SignUpp2> createState() => _SignUpWizardState(this.patient);
+  State<SignUpp2> createState() => _SignUpWizardState(patient);
 }
 
 class _SignUpWizardState extends State<SignUpp2> {
@@ -48,8 +48,8 @@ class _SignUpWizardState extends State<SignUpp2> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Container(
-                        padding: EdgeInsets.only(top: 100),
-                        child: Column(
+                        padding: const EdgeInsets.only(top: 100),
+                        child: const Column(
                           children: [
                             Text("On aimerez bien savoir",style: TextStyle(color: Colors.green,fontSize: 20),),
                             Text("d'autres informations sur vous",style: TextStyle(color: Colors.green,fontSize: 20),)
@@ -62,15 +62,15 @@ class _SignUpWizardState extends State<SignUpp2> {
                 )
             ),
             Container(
-              padding: EdgeInsets.only(top:240),
+              padding: const EdgeInsets.only(top:240),
               child: Form(
                   key: _formKey,
                   child: Column(
                     children: [
                       Container(
-                        padding: EdgeInsets.only(left: 10,right: 10),
+                        padding: const EdgeInsets.only(left: 10,right: 10),
                         child: TextFormField(
-                            decoration: InputDecoration(
+                            decoration: const InputDecoration(
                               labelText: 'Votre numero de telehpne',
                               hintText: 'numero de telehpne',
                               prefixIcon: Icon(Icons.add_call),
@@ -85,9 +85,9 @@ class _SignUpWizardState extends State<SignUpp2> {
                             }
                         ),
                       ),
-                      SizedBox(height: 20,),
+                      const SizedBox(height: 20,),
                       Container(
-                        padding: EdgeInsets.only(left: 10,right: 10),
+                        padding: const EdgeInsets.only(left: 10,right: 10),
                         child: TextFormField(
                             onChanged: (value){
 
@@ -107,9 +107,9 @@ class _SignUpWizardState extends State<SignUpp2> {
                             }
                         ),
                       ),
-                      SizedBox(height: 20,),
+                      const SizedBox(height: 20,),
                       Container(
-                        padding: EdgeInsets.only(left: 10,right: 10),
+                        padding: const EdgeInsets.only(left: 10,right: 10),
                         child: TextFormField(
                           onChanged: (value){
 
@@ -118,7 +118,7 @@ class _SignUpWizardState extends State<SignUpp2> {
                           decoration: InputDecoration(
                             labelText: 'Votre mot de passe',
                             hintText: 'mot passe',
-                            border: OutlineInputBorder(borderSide: BorderSide(width: 10)),
+                            border: const OutlineInputBorder(borderSide: BorderSide(width: 10)),
                             suffixIcon: IconButton(
                               icon: Icon(_obscureText ? Icons.visibility_off : Icons.visibility),
                               onPressed: () {
@@ -137,16 +137,16 @@ class _SignUpWizardState extends State<SignUpp2> {
                             }
                         ),
                       ),
-                      SizedBox(height: 20,),
+                      const SizedBox(height: 20,),
                       Container(
-                        padding: EdgeInsets.only(left: 10,right: 10),
+                        padding: const EdgeInsets.only(left: 10,right: 10),
                         child: TextFormField(
 
                           obscureText: _obscureText,
                           decoration: InputDecoration(
                             labelText: 'Confirmer votre mot de passe',
                             hintText: 'mot passe',
-                            border: OutlineInputBorder(borderSide: BorderSide(width: 10)),
+                            border: const OutlineInputBorder(borderSide: BorderSide(width: 10)),
                             suffixIcon: IconButton(
                               icon: Icon(_obscureText ? Icons.visibility_off : Icons.visibility),
                               onPressed: () {
@@ -170,23 +170,23 @@ class _SignUpWizardState extends State<SignUpp2> {
                           children: [
 
                             Container(
-                              padding: EdgeInsets.only(top: 100,left: 50),
+                              padding: const EdgeInsets.only(top: 100,left: 50),
                               child: TextButton(
                                 onPressed: (){
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) =>  LSU()
+                                        builder: (context) =>  const LSU()
                                     ),
                                   );
 
                                 },
-                                child: Text("Go Out",style: TextStyle(color: Colors.green),),
+                                child: const Text("Go Out",style: TextStyle(color: Colors.green),),
                               ),
                             ),
 
                             Container(
-                              padding: EdgeInsets.only(top: 100,left: 100),
+                              padding: const EdgeInsets.only(top: 100,left: 100),
                               child:ElevatedButton(
                                 onPressed: () {
                                   if(_formKey.currentState!.validate()){
@@ -208,13 +208,13 @@ class _SignUpWizardState extends State<SignUpp2> {
                                     );
                                   }
                                 },
-                                child: Text("Next",style: TextStyle(color: Colors.white),),
                                 style: ButtonStyle(
-                                  minimumSize: MaterialStateProperty.all(Size(150, 60)),
+                                  minimumSize: MaterialStateProperty.all(const Size(150, 60)),
                                   shape: MaterialStatePropertyAll(RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))),
                                   backgroundColor: MaterialStateProperty.all(Colors.black12),
 
                                 ),
+                                child: const Text("Next",style: TextStyle(color: Colors.white),),
                               ),
                               // Set the button text
                             ),

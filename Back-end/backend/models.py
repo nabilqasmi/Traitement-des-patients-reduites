@@ -41,7 +41,19 @@ class Patients:
 
 @dataclass
 class Medicament:
+    id:int
     nom: str
-    dose: int
-    temps: str
     idPatient:int
+    dose: int
+    Date: str
+    time:str
+
+@dataclass
+class medecin:
+    nom:str
+    specialite:str
+    image:str
+    IdP:int
+
+
+

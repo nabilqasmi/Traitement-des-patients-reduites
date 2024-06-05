@@ -19,7 +19,7 @@ class  LSU extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            Container(
+            const SizedBox(
                 height: 700,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -42,21 +42,21 @@ class  LSU extends StatelessWidget {
                 ),
             ),
             Container(
-              alignment: Alignment(0,0.8),
+              alignment: const Alignment(0,0.8),
               child: TextButton( // Use ElevatedButton for a raised button effect
                   onPressed: () {
                     Navigator.push(context, MaterialPageRoute(
                         builder: (context){
-                          return SignUpp();
+                          return const SignUpp();
                         }
                     ));
                     //_controller.jumpTo(3);
                   },
-                child: Text("Sign Up",style: TextStyle(color: Colors.white),),
                 style: ButtonStyle(
-                    minimumSize: MaterialStateProperty.all(Size(300, 40)),
+                    minimumSize: MaterialStateProperty.all(const Size(300, 40)),
                     backgroundColor: MaterialStateProperty.all(Colors.green)
-                ), // Set the button text
+                ),
+                child: const Text("Sign Up",style: TextStyle(color: Colors.white),), // Set the button text
               ),
             ),
             Container(
@@ -65,11 +65,11 @@ class  LSU extends StatelessWidget {
                 onPressed: (){
                   Navigator.push(context, MaterialPageRoute(
                       builder: (context){
-                        return LogIn();
+                        return const LogIn();
                       }
                   ));
                 },
-                  child: Text("Log In",style: TextStyle(color: Colors.green),)
+                  child: const Text("Log In",style: TextStyle(color: Colors.green),)
               ),
             )
           ],

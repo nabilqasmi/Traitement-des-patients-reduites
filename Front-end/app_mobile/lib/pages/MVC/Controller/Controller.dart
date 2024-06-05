@@ -1,9 +1,10 @@
+import 'package:app_mobile/pages/MVC/models/Medecin.dart';
 import 'package:app_mobile/pages/MVC/models/Medicament.dart';
 import 'package:app_mobile/pages/MVC/models/Patient.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
-import '../models/PatientData.dart';
+
 
 Future<void> DataPatient(Patient patient) async {
   var url = Uri.parse('http://10.0.2.2:5000/AddPatients');
@@ -23,6 +24,28 @@ Future<void> DataPatient(Patient patient) async {
     print('Erreur lors de la connexion au serveur: $e');
   }
 }
+
+Future<void> deleteMed(String nomMed,int idPatient) async {
+  var url = Uri.parse('http://10.0.2.2:5000/suppMedicament');
+
+  var deletepatient = jsonEncode({
+    'nomMed': nomMed,
+    'IdPatient': idPatient,
+  });
+
+  try {
+    var response = await http.post(
+      url,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: deletepatient,
+    );
+  } catch (e) {
+    print('Erreur lors de la connexion au serveur: $e');
+  }
+}
+
 
 Future<void> DataMedicament(Medicament medi) async {
   var url = Uri.parse('http://10.0.2.2:5000/AddMedicament');
@@ -164,12 +187,8 @@ Future<String> DataCheckPatient(int id) async {
       body: checkDataPatient,
     );
 
-    if (response.statusCode == 200) {
-      final check = jsonDecode(response.body);
-      return check;
-    } else {
-      return 'Erreur: ${response.body}';
-    }
+    //print(response.body);
+    return response.body;
   } catch (e) {
     print('Erreur lors de la connexion au serveur: $e');
     return "false";
@@ -188,10 +207,139 @@ Future<Patient?> DataLastPatient() async {
     );
     final patientjson = jsonDecode(response.body);
     Patient patient=Patient.fromJson(patientjson);
-    print(patient.id);
+    //print(patient.id);
     return patient;
   } catch (e) {
     print('Erreur lors de la connexion au serveur: $e');
   }
-  return new Patient();
+  return Patient();
+}
+
+
+Future<List<Medicament?>> allMedicaments(int id) async {
+  var url = Uri.parse('http://10.0.2.2:5000/allMedicaments');
+
+  // Créez un objet JSON avec les données de connexion
+  var AllMed = jsonEncode({
+    'Id': id,
+  });
+  try {
+    var response = await http.post(
+      url,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: AllMed,
+    );
+    List<Medicament> allMedicaments= [];
+    final  med= jsonDecode(response.body);
+    for (var i in med){
+      Medicament med=Medicament.fromJson(i);
+      //print(med);
+      allMedicaments.add(med);
+    }
+    return allMedicaments;
+  } catch (e) {
+    print('Erreur lors de la connexion au serveur: $e');
+  }
+  return [];
+}
+
+
+Future<String> DataCheckPoids(String poids) async {
+  var url = Uri.parse('http://10.0.2.2:5000/checkPoids');
+  var checkPoidsData = jsonEncode({'poids': poids});
+
+  try {
+    var response = await http.post(
+      url,
+      headers: {'Content-Type': 'application/json'},
+      body: checkPoidsData,
+    );
+
+    if (response.statusCode == 200) {
+      final check = jsonDecode(response.body);
+      return 'poids: ${check['poids']}, Valid: ${check['valid']}';
+    } else {
+      return 'Erreur: ${response.body}';
+    }
+  } catch (e) {
+    print('Erreur lors de la connexion au serveur: $e');
+    return "false";
+  }
+}
+
+Future<int> Agee(String nomu) async {
+  var url = Uri.parse('http://10.0.2.2:5000/Age');
+  var checkPoidsData = jsonEncode({'nomUti': nomu});
+
+  try {
+    var response = await http.post(
+      url,
+      headers: {'Content-Type': 'application/json'},
+      body: checkPoidsData,
+    );
+
+    if (response.statusCode == 200) {
+      final check=jsonDecode(response.body);
+      int result=check['age'];
+      return result;
+    } else {
+      return -1;
+    }
+  } catch (e) {
+    print('Erreur lors de la connexion au serveur: $e');
+    return -1;
+  }
+}
+
+Future<void> DataMedecin(Medecin med) async {
+  var url = Uri.parse('http://10.0.2.2:5000/addmedecin');
+
+  // Convertissez l'objet patient en JSON
+  var medJson = jsonEncode(med.toJson());
+  print(medJson);
+  try {
+    var response = await http.post(
+      url,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: medJson,
+    );
+  } catch (e) {
+    print('Erreur lors de la connexion au serveur: $e');
+  }
+}
+
+
+Future<List<Medecin?>> allMedecin(int id) async {
+  var url = Uri.parse('http://10.0.2.2:5000/allmedecin');
+  //print(id);
+  // Créez un objet JSON avec les données de connexion
+  var AllMed = jsonEncode({
+    'Id': id,
+  });
+  try {
+    var response = await http.post(
+      url,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: AllMed,
+    );
+    List<Medecin> allMed= [];
+    final  med= jsonDecode(response.body);
+
+    for (var i in med){
+      //print(i);
+      Medecin meed=Medecin.fromJson(i);
+      print(meed);
+      allMed.add(meed);
+    }
+    return allMed;
+  } catch (e) {
+    print('Erreur lors de la connexion au serveur: $e');
+  }
+  return [];
 }

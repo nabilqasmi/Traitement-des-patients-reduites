@@ -16,7 +16,7 @@ class Email extends StatelessWidget {
             onPressed: () {
               Navigator.push(context, MaterialPageRoute(
                   builder: (context){
-                    return NewPass();
+                    return const NewPass();
                   }
               ));
             },
@@ -25,12 +25,12 @@ class Email extends StatelessWidget {
         ScaffoldMessenger.of(context).showSnackBar(snackBar);
       },
       child: Container(
-        padding: EdgeInsets.all(25),
-        margin: EdgeInsets.symmetric(horizontal: 25),
-        decoration: BoxDecoration(
+        padding: const EdgeInsets.all(25),
+        margin: const EdgeInsets.symmetric(horizontal: 25),
+        decoration: const BoxDecoration(
           color: Colors.green,
         ),
-        child: Center(
+        child: const Center(
           child: Text(
             "Email Confirmé",
             style: TextStyle(
