@@ -88,6 +88,7 @@ python test.py
 - ajouter "- assets/images/"
 
 ## Puis pour lancer l'application coté front: 
+## lancer
 
 Apres l'installation de flutter, quand tu open le projet(open Flutter Project) en Android Studio tu dois mettre Dans Flutter SDK path: le dossier de flutter que tu as déja installer
 
